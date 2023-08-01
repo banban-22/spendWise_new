@@ -59,7 +59,7 @@ function App() {
     <Router>
       {isUserSignedIn() && activeMenu && (
         <div className="w-72 fixed sidebar bg-white">
-          <Sidebar />
+          <Sidebar currentUser={user} onSignOut={signOut} />
         </div>
       )}
 
@@ -70,7 +70,7 @@ function App() {
       >
         {isUserSignedIn() && (
           <div className="fixed md:static bg-primary-bg w-full">
-            <Navbar currentUser={user} onSignOut={signOut} />
+            <Navbar currentUser={user} />
           </div>
         )}
         <Routes>

@@ -7,13 +7,20 @@ import { MdCurrencyExchange } from 'react-icons/md';
 import { SiMoneygram } from 'react-icons/si';
 import { useStateContext } from '../contexts/ContextProvider';
 import { MdOutlineCancel } from 'react-icons/md';
+import { PiSignOut } from 'react-icons/pi';
 // import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-const Sidebar = () => {
+const Sidebar = ({ currentUser, onSignOut }) => {
   const { activeMenu, setActiveMenu, screenSize } = useStateContext();
 
   const handleCloseSidebar = () => {
     if (activeMenu && screenSize <= 768) setActiveMenu(false);
+  };
+
+  const handleSignOut = async () => {
+    await Session.destroy().then(() => {
+      onSignOut();
+    });
   };
 
   const activeLink =
@@ -98,6 +105,22 @@ const Sidebar = () => {
               <span className="capitalize">currency rate</span>
             </NavLink>
           </div>
+          {currentUser && (
+            <div className="mt-1">
+              <NavLink
+                to="/signin"
+                onClick={handleSignOut}
+                style={({ isActive }) => ({
+                  backgroundColor: isActive ? 'bg-secondary' : '',
+                })}
+                className={({ isActive }) =>
+                  isActive ? activeLink : normalLink
+                }
+              >
+                <PiSignOut /> <span>SignOut</span>
+              </NavLink>
+            </div>
+          )}
         </>
       )}
     </div>
