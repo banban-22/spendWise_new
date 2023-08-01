@@ -31,7 +31,7 @@ const TransactionPage = () => {
       .catch((err) => {
         setErrors(err);
       });
-  });
+  }, []);
 
   return (
     <div>
