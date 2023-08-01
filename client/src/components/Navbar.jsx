@@ -5,7 +5,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { AiOutlineMenu } from 'react-icons/ai';
 
-const Navbar = () => {
+const Navbar = ({ currentUser, onSignOut }) => {
   const {
     activeMenu,
     setActiveMenu,
@@ -15,6 +15,12 @@ const Navbar = () => {
     screenSize,
     setScreenSize,
   } = useStateContext();
+
+  const handleSignOut = async () => {
+    await Session.destroy().then(() => {
+      onSignOut();
+    });
+  };
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -43,10 +49,12 @@ const Navbar = () => {
         <AiOutlineMenu className="text-xl" />
       </button>
 
-      <span className="text-4xl">Welcome Name</span>
+      {currentUser && (
+        <span className="text-4xl">Welcome {currentUser.first_name}</span>
+      )}
       <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg">
         <p>
-          <span className="text-14 font-bold">Name</span>
+          <span className="text-14 font-bold">{currentUser.first_name}</span>
         </p>
         <MdKeyboardArrowDown className="text-gray-400 text-14" />
       </div>
