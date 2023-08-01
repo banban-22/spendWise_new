@@ -2,20 +2,20 @@ import React, { useEffect, useState } from 'react';
 import TransactionCreate from '../components/TransactionCreate';
 import TransactionGrid from '../components/TransactionGrid';
 
-import {
-  GridComponent,
-  ColumnsDirective,
-  ColumnDirective,
-  Page,
-  Inject,
-  Filter,
-  Sort,
-  Resize,
-  ContextMenu,
-  ExcelExport,
-  PdfExport,
-  Edit,
-} from '@syncfusion/ej2-react-grids';
+// import {
+//   GridComponent,
+//   ColumnsDirective,
+//   ColumnDirective,
+//   Page,
+//   Inject,
+//   Filter,
+//   Sort,
+//   Resize,
+//   ContextMenu,
+//   ExcelExport,
+//   PdfExport,
+//   Edit,
+// } from '@syncfusion/ej2-react-grids';
 import { Transaction } from '../requests';
 
 const TransactionPage = () => {
