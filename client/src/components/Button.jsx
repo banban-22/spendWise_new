@@ -11,6 +11,7 @@ const Button = ({
   rounded,
   roundedSm,
   btnPadding,
+  marginLeft,
 }) => {
   const buttonClass = classNames(
     `bg-${bgColor}`,
@@ -18,6 +19,7 @@ const Button = ({
     'text-center',
     `mt-${customMargin}`,
     `w-${customWidth}`,
+    `ml-${marginLeft}`,
     'font-semibold',
     { 'shadow-xl': rounded, 'rounded-full': rounded },
     { rounded: roundedSm },

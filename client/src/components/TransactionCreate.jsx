@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Transaction } from '../requests';
 
@@ -12,7 +12,22 @@ const TransactionCreate = () => {
   const [description, setDescription] = useState('');
   const [currency, setCurrency] = useState('');
   const [category_id, setCategoryId] = useState('');
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:3000/api/v1/categories');
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const handleInputChange = useCallback((event) => {
     const { name, value } = event.target;
@@ -30,7 +45,7 @@ const TransactionCreate = () => {
       case 'currency':
         setCurrency(value);
         break;
-      case 'category_id':
+      case 'category':
         setCategoryId(value);
         break;
       default:
@@ -46,7 +61,7 @@ const TransactionCreate = () => {
         date,
         description,
         currency,
-        category_id,
+        category_id: Number(category_id),
       });
 
       if (newTransaction.errors) {
@@ -66,6 +81,8 @@ const TransactionCreate = () => {
       setCategoryId('');
     }
   }, [amount, date, description, currency, category_id, navigate]);
+
+  console.log('Categories:', categories);
 
   return (
     <div className="flex items-end justify-center">
@@ -95,20 +112,20 @@ const TransactionCreate = () => {
         value={currency}
         onChange={handleInputChange}
       />
-      <Input
-        placeholder="Category"
-        name="category_id"
+      <InputDropDown
+        placeholder="Select a category"
+        name="category"
         value={category_id}
+        options={categories}
         onChange={handleInputChange}
       />
-      <InputDropDown />
       <Button
         bgColor="orange"
         hoverBgColor="amber-200"
         onClick={handleAddTransaction}
         roundedSm={true}
         btnPadding={8}
-        marginLeft={2}
+        marginLeft={4}
       >
         Add Transaction
       </Button>
