@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Transaction } from '../requests';
 
 import Input from './Input';
+import InputDropDown from './InputDropDown';
 import Button from './Button';
 
 const TransactionCreate = () => {
@@ -10,6 +11,7 @@ const TransactionCreate = () => {
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [currency, setCurrency] = useState('');
+  const [category_id, setCategoryId] = useState('');
   const navigate = useNavigate();
 
   const handleInputChange = useCallback((event) => {
@@ -28,6 +30,9 @@ const TransactionCreate = () => {
       case 'currency':
         setCurrency(value);
         break;
+      case 'category_id':
+        setCategoryId(value);
+        break;
       default:
         break;
     }
@@ -41,25 +46,26 @@ const TransactionCreate = () => {
         date,
         description,
         currency,
+        category_id,
       });
 
       if (newTransaction.errors) {
         throw new Error(newTransaction.errors);
       } else {
-        const newTransactionId = newTransaction.id;
-        navigate(`/transactions/${newTransactionId}`);
+        navigate(`/transactions`, { replace: true });
       }
       console.log('Transaction created:', newTransaction);
     } catch (error) {
       console.error('Error creating transaction:', error);
     } finally {
-      // Reset the form fields after the request is completed (success or error)
+      // Reset the form fields
       setAmount('');
       setDate('');
       setDescription('');
       setCurrency('');
+      setCategoryId('');
     }
-  }, [amount, date, description, currency, navigate]);
+  }, [amount, date, description, currency, category_id, navigate]);
 
   return (
     <div className="flex items-end justify-center">
@@ -89,6 +95,13 @@ const TransactionCreate = () => {
         value={currency}
         onChange={handleInputChange}
       />
+      <Input
+        placeholder="Category"
+        name="category_id"
+        value={category_id}
+        onChange={handleInputChange}
+      />
+      <InputDropDown />
       <Button
         bgColor="orange"
         hoverBgColor="amber-200"
@@ -104,38 +117,3 @@ const TransactionCreate = () => {
 };
 
 export default TransactionCreate;
-
-// import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { Transaction } from '../requests';
-// import NewTransaction from './NewTransaction';
-
-// const TransactionCreate = () => {
-//   const [errors, setErrors] = useState([]);
-//   const navigate = useNavigate();
-
-//   const addTransaction = async (amount, date, description, currency) => {
-//     try {
-//       const newTransaction = await Transaction.create({
-//         amount: Number(amount),
-//         date,
-//         description,
-//         currency,
-//       });
-
-//       if (newTransaction.errors) {
-//         throw new Error(newTransaction.errors);
-//       } else {
-//         const newTransactionId = newTransaction.id;
-//         navigate(`/transactions/${newTransactionId}`);
-//       }
-//       console.log(newTransaction);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-
-//   return <NewTransaction addTransaction={addTransaction} />;
-// };
-
-// export default TransactionCreate;
