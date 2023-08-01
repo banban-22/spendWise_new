@@ -8,7 +8,6 @@ import { SiMoneygram } from 'react-icons/si';
 import { useStateContext } from '../contexts/ContextProvider';
 import { MdOutlineCancel } from 'react-icons/md';
 import { PiSignOut } from 'react-icons/pi';
-// import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 const Sidebar = ({ currentUser, onSignOut }) => {
   const { activeMenu, setActiveMenu, screenSize } = useStateContext();
@@ -110,12 +109,7 @@ const Sidebar = ({ currentUser, onSignOut }) => {
               <NavLink
                 to="/signin"
                 onClick={handleSignOut}
-                style={({ isActive }) => ({
-                  backgroundColor: isActive ? 'bg-secondary' : '',
-                })}
-                className={({ isActive }) =>
-                  isActive ? activeLink : normalLink
-                }
+                className="flex items-center gap-3 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2 bg-orange"
               >
                 <PiSignOut /> <span>SignOut</span>
               </NavLink>

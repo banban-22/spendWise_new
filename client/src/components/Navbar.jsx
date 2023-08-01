@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Session } from '../requests';
 import { useStateContext } from '../contexts/ContextProvider';
 
-// import { MdKeyboardArrowDown } from 'react-icons/md';
 import { AiOutlineMenu } from 'react-icons/ai';
 
 const Navbar = ({ currentUser }) => {
@@ -19,12 +17,6 @@ const Navbar = ({ currentUser }) => {
   const handleClickSetting = () => {
     console.log('clicked');
   };
-
-  // const handleSignOut = async () => {
-  //   await Session.destroy().then(() => {
-  //     onSignOut();
-  //   });
-  // };
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -67,7 +59,6 @@ const Navbar = ({ currentUser }) => {
             Hi, {currentUser.first_name}
           </span>
         </p>
-        {/* <MdKeyboardArrowDown className="text-gray-400 text-14" /> */}
       </div>
     </div>
   );

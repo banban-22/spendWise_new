@@ -18,7 +18,6 @@ const TransactionGrid = ({ transactionData }) => {
   console.log(transactionData);
 
   return (
-    // <div style={{ height: '400px' }}>
     <div>
       <GridComponent
         dataSource={transactionData}
