@@ -14,6 +14,7 @@ const Input = (props) => {
     max,
     formBorderColor,
     formWidth,
+    className,
   } = props;
 
   const borderColorClass = formBorderColor
@@ -28,7 +29,7 @@ const Input = (props) => {
       </label>
       <input
         type={type || 'text'}
-        className={`border-color border-2 p-2 rounded ${widthClass}`}
+        className={`border-color border-2 p-2 rounded ${widthClass} ${className}`}
         value={value}
         id={id}
         name={name || id}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Input from './Input';
 import InputDropDown from './InputDropDown';
 import Button from './Button';
+import { FiArrowRightCircle } from 'react-icons/fi';
 
 const CurrencyConverter = () => {
   const [currencyAmount, setCurrencyAmount] = useState('');
@@ -67,15 +68,15 @@ const CurrencyConverter = () => {
   }, [fromCurrency, toCurrency]);
 
   return (
-    <div>
-      <div className="flex justify-around">
-        <p>From:</p>
+    <div className="flex flex-col content-center items-center">
+      <div className="flex justify-around items-center bg-white p-20 mx-10 rounded-xl shadow-lg">
         <Input
           type="number"
           placeholder="Amount"
           name="currencyAmount"
           value={currencyAmount}
           onChange={handleInputChange}
+          className="rounded-lg"
         />
         <InputDropDown
           placeholder="Currency"
@@ -83,26 +84,36 @@ const CurrencyConverter = () => {
           value={fromCurrency}
           options={currencies}
           onChange={handleInputChange}
+          className="rounded-lg"
         />
-
-        <p>To:</p>
+        <FiArrowRightCircle className="text-3xl mt-8" />
         <InputDropDown
           placeholder="Currency"
           name="toCurrency"
           value={toCurrency}
           options={currencies}
           onChange={handleInputChange}
+          className="rounded-lg"
         />
       </div>
 
-      <div className="mt-5 flex flex-col align-center items-center">
+      <div className="mt-10 flex flex-col align-center items-center bg-orange shadow-xl rounded-2xl py-10 w-1/2">
         <h2 className="text-2xl">
-          Exchange Rate for {fromCurrency} to {toCurrency}:
+          Exchange Rate:{' '}
+          <span className="text-3xl font-bold">{fromCurrency}</span> to{' '}
+          <span className="text-3xl font-bold">{toCurrency}</span>
         </h2>
         {exchangeRate.conversion_rate && (
           <div>
-            <p>Conversion Rate: {exchangeRate.conversion_rate}</p>
-            <p>Result: {exchangeRate.conversion_rate * currencyAmount}</p>
+            <p className="text-lg">
+              Conversion Rate: {exchangeRate.conversion_rate}
+            </p>
+            <p className="text-xl">
+              Price:
+              <span className="text-3xl font-bold ml-3">
+                {exchangeRate.conversion_rate * currencyAmount} {toCurrency}
+              </span>
+            </p>
           </div>
         )}
       </div>

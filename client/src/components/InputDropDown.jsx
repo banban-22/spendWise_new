@@ -15,6 +15,7 @@ const InputDropDown = (props) => {
     formBorderColor,
     formWidth,
     options,
+    className,
   } = props;
 
   const borderColorClass = formBorderColor
@@ -31,7 +32,7 @@ const InputDropDown = (props) => {
       <select
         name={name || id}
         id={id}
-        className={`border-color border-2 p-2 rounded ${widthClass}`}
+        className={`border-color border-2 p-2 rounded ${widthClass} ${className}`}
         onChange={onChange}
         value={value}
       >
