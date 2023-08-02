@@ -47,9 +47,6 @@ export const Transaction = {
   create(body) {
     return webApi.request('transactions', body, 'POST');
   },
-  show(id) {
-    return webApi.get(`transactions/${id}`);
-  },
   update(id, body) {
     return webApi.request(`transactions/${id}`, body, 'PATCH');
   },
@@ -66,27 +63,6 @@ export const Category = {
     return webApi.request('categories', body, 'POST');
   },
 };
-
-// export const User = {
-//   create(body) {
-//     return webApi.request('users', body, 'POST');
-//   },
-//   current() {
-//     return webApi.get('users/current');
-//   },
-// };
-
-// export const Session = {
-//   create(body) {
-//     return webApi.request('session', body, 'POST');
-//   },
-//   destroy() {
-//     return webApi.request('session', {}, 'DELETE');
-//   },
-//   current() {
-//     return webApi.get('session/current');
-//   },
-// };
 
 export const Session = {
   create(requestBody) {

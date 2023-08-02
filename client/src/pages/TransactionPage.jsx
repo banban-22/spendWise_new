@@ -3,21 +3,6 @@ import TransactionCreate from '../components/TransactionCreate';
 import TransactionGrid from '../components/TransactionGrid';
 import { Transaction, Category } from '../requests';
 
-// import {
-//   GridComponent,
-//   ColumnsDirective,
-//   ColumnDirective,
-//   Page,
-//   Inject,
-//   Filter,
-//   Sort,
-//   Resize,
-//   ContextMenu,
-//   ExcelExport,
-//   PdfExport,
-//   Edit,
-// } from '@syncfusion/ej2-react-grids';
-
 const TransactionPage = () => {
   const [transactionData, setTransactionData] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -44,6 +29,15 @@ const TransactionPage = () => {
       });
   }, []);
 
+  const updatedDataInDatabase = async (updatedData) => {
+    try {
+      const response = await Transaction.update(updatedData.id, updatedData);
+      console.log('updatedData', response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <div className="mb-10">
@@ -57,6 +51,7 @@ const TransactionPage = () => {
       <TransactionGrid
         transactionData={transactionData}
         categories={categories}
+        updatedDataInDatabase={updatedDataInDatabase}
       />
     </div>
   );
