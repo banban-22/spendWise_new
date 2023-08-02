@@ -14,13 +14,23 @@ import {
   PdfExport,
 } from '@syncfusion/ej2-react-grids';
 
-const TransactionGrid = ({ transactionData }) => {
+const TransactionGrid = ({ transactionData, categories }) => {
   console.log(transactionData);
+
+  const categoriesMap = {};
+  categories.forEach((category) => {
+    categoriesMap[category.id] = category.name;
+  });
+
+  const enrichedTransactionData = transactionData.map((transaction) => ({
+    ...transaction,
+    category: categoriesMap[transaction.category_id],
+  }));
 
   return (
     <div>
       <GridComponent
-        dataSource={transactionData}
+        dataSource={enrichedTransactionData}
         allowPaging={true}
         allowSorting={true}
         toolbar={['Delete']}
@@ -29,11 +39,7 @@ const TransactionGrid = ({ transactionData }) => {
       >
         <ColumnsDirective>
           <ColumnDirective field="amount" headerText="Amount" width="100" />
-          {/* <ColumnDirective
-            field="category_id"
-            headerText="Category ID"
-            width="100"
-          /> */}
+          <ColumnDirective field="category" headerText="Category" width="100" />
           <ColumnDirective field="currency" headerText="Currency" width="100" />
           <ColumnDirective field="date" headerText="Date" width="100" />
           <ColumnDirective
