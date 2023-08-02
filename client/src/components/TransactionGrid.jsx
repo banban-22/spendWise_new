@@ -12,12 +12,14 @@ import {
   ExcelExport,
   Edit,
   PdfExport,
+  Toolbar,
 } from '@syncfusion/ej2-react-grids';
 
 const TransactionGrid = ({
   transactionData,
   categories,
   updatedDataInDatabase,
+  deleteDataInDatabase,
 }) => {
   console.log(transactionData);
 
@@ -34,10 +36,20 @@ const TransactionGrid = ({
   const handleGridActionBegin = (args) => {
     const { requestType, action, data } = args;
 
+    console.log('Request Type:', requestType);
+    console.log('Action:', action);
+    console.log('Data:', data);
+
     if (requestType === 'save' && action === 'edit' && data) {
       const updatedData = Array.isArray(data) ? data[0] : data;
       if (updatedData.id) {
         updatedDataInDatabase(updatedData);
+      }
+    } else if (requestType === 'delete' && data) {
+      const deleteData = Array.isArray(data) ? data[0] : data;
+      if (deleteData.id) {
+        console.log('Deleting data:', deleteData);
+        deleteDataInDatabase(deleteData);
       }
     }
   };
@@ -74,6 +86,7 @@ const TransactionGrid = ({
             ExcelExport,
             Edit,
             PdfExport,
+            Toolbar,
           ]}
         />
       </GridComponent>

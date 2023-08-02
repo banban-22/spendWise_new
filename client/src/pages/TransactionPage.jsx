@@ -38,6 +38,15 @@ const TransactionPage = () => {
     }
   };
 
+  const deleteDataInDatabase = async (deleteData) => {
+    try {
+      const response = await Transaction.destroy(deleteData.id);
+      console.log('deleteData', response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <div className="mb-10">
@@ -52,6 +61,7 @@ const TransactionPage = () => {
         transactionData={transactionData}
         categories={categories}
         updatedDataInDatabase={updatedDataInDatabase}
+        deleteDataInDatabase={deleteDataInDatabase}
       />
     </div>
   );
