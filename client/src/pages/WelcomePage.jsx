@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import welcome from '../img/pic1.svg';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
@@ -12,8 +13,9 @@ const WelcomePage = ({
   rounded,
   btnPadding,
 }) => {
+  const navigate = useNavigate();
   const handleClick = () => {
-    console.log('hello');
+    navigate('/signup');
   };
 
   return (
