@@ -7,6 +7,7 @@ import InputDropDown from './InputDropDown';
 import Button from './Button';
 
 const TransactionCreate = () => {
+  const [transaction_type, setTransactionType] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
@@ -29,10 +30,18 @@ const TransactionCreate = () => {
     fetchCategories();
   }, []);
 
+  const categoryOptions = categories.map((category) => ({
+    value: category.id,
+    label: category.name,
+  }));
+
   const handleInputChange = useCallback((event) => {
     const { name, value } = event.target;
 
     switch (name) {
+      case 'transaction_type':
+        setTransactionType(value);
+        break;
       case 'amount':
         setAmount(value);
         break;
@@ -55,13 +64,26 @@ const TransactionCreate = () => {
 
   const handleAddTransaction = useCallback(async () => {
     try {
+      // if (
+      //   !transaction_type ||
+      //   !['expenditure', 'income'].includes(transaction_type)
+      // ) {
+      //   throw new Error('Please select a valid transaction type.');
+      // }
+
       const newTransaction = await Transaction.create({
+        transaction_type,
         amount: Number(amount),
         date,
         description,
         currency,
         category_id: Number(category_id),
       });
+      console.log('newTransaction:', newTransaction);
+
+      // if (type === 'expenditure') {
+      // } else if (type === 'income') {
+      // }
 
       if (newTransaction.errors) {
         throw new Error(newTransaction.errors);
@@ -72,16 +94,35 @@ const TransactionCreate = () => {
       console.error('Error creating transaction:', error);
     } finally {
       // Reset the form fields
+      setTransactionType('');
       setAmount('');
       setDate('');
       setDescription('');
       setCurrency('');
       setCategoryId('');
     }
-  }, [amount, date, description, currency, category_id, navigate]);
+  }, [
+    transaction_type,
+    amount,
+    date,
+    description,
+    currency,
+    category_id,
+    navigate,
+  ]);
 
   return (
     <div className="flex items-end justify-center">
+      <InputDropDown
+        placeholder="Type"
+        name="transaction_type"
+        value={transaction_type}
+        options={[
+          { value: 'expenditure', label: 'Expenditure' },
+          { value: 'income', label: 'Income' },
+        ]}
+        onChange={handleInputChange}
+      />
       <Input
         type="number"
         placeholder="Amount"
@@ -112,7 +153,7 @@ const TransactionCreate = () => {
         placeholder="Select a category"
         name="category"
         value={category_id}
-        options={categories}
+        options={categoryOptions}
         onChange={handleInputChange}
       />
       <Button

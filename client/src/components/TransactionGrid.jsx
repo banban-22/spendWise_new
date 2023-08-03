@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   GridComponent,
   ColumnsDirective,
@@ -57,10 +57,27 @@ const TransactionGrid = ({
         toolbar={['Delete']}
         editSettings={{ allowDeleting: true, allowEditing: true }}
         actionBegin={handleGridActionBegin}
+        filterSettings={{ type: 'Menu' }}
+        allowFiltering={true}
         width="auto"
       >
         <ColumnsDirective>
-          <ColumnDirective field="amount" headerText="Amount" width="100" />
+          <ColumnDirective
+            field="transaction_type"
+            headerText="Type"
+            width="100"
+          />
+          <ColumnDirective
+            field="amount"
+            headerText="Amount"
+            width="100"
+            template={(cellData) => {
+              const transaction_type = cellData.transaction_type;
+              const amount = cellData.amount;
+              const textColor = transaction_type === 'income' ? 'green' : 'red';
+              return <span style={{ color: textColor }}>{amount}</span>;
+            }}
+          />
           <ColumnDirective field="currency" headerText="Currency" width="100" />
           <ColumnDirective field="category" headerText="Category" width="100" />
           <ColumnDirective field="date" headerText="Date" width="100" />
