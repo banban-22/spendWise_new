@@ -1,5 +1,5 @@
 class TransactionSerializer < ActiveModel::Serializer
-  attributes :id, :amount, :description, :date, :currency, :category_id, :user_id
+  attributes :id, :amount, :description, :date, :currency, :category_id, :user_id, :transaction_type
 
   belongs_to :user, key: :user
   class UserSerializer < ActiveModel::Serializer
