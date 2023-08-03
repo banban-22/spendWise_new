@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import TransactionPage from './pages/TransactionPage';
+import ReceiptPage from './pages/ReceiptPage';
 import CurrencyRate from './pages/CurrencyRate';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
@@ -90,6 +91,7 @@ function App() {
             <>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/transactions" element={<TransactionPage />} />
+              <Route path="/receipts" element={<ReceiptPage />} />
               <Route path="/currency_rates" element={<CurrencyRate />} />
             </>
           )}
