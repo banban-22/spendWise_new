@@ -33,7 +33,7 @@ class Api::V1::TransactionsController < Api::ApplicationController
     end
 
     def destroy
-        if @transaction.destroyed?
+        if @transaction.destroy
             render json: { status: 200, message: "Transaction deleted" }, status: 200
         else
             render json: { status: 422, messages: @transaction.errors.messages }, status: 422
