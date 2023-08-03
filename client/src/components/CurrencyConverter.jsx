@@ -29,9 +29,9 @@ const CurrencyConverter = () => {
     }
   };
 
-  const handleGetCurrencyRate = () => {
-    console.log(currencyAmount, fromCurrency, toCurrency);
-  };
+  // const handleGetCurrencyRate = () => {
+  //   console.log(currencyAmount, fromCurrency, toCurrency);
+  // };
 
   useEffect(() => {
     const API_KEY = process.env.REACT_APP_CURRENCY_API_KEY;
@@ -59,7 +59,6 @@ const CurrencyConverter = () => {
     fetch(BASE_URL)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setExchangeRate(data);
       })
       .catch((error) => {

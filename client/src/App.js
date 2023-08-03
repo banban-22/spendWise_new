@@ -5,7 +5,7 @@ import { User } from './requests';
 import WelcomePage from './pages/WelcomePage';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import Dashboard from './components/Dashboard';
+import Dashboard from './pages/Dashboard';
 import TransactionPage from './pages/TransactionPage';
 import ReceiptPage from './pages/ReceiptPage';
 import CurrencyRate from './pages/CurrencyRate';
@@ -26,7 +26,6 @@ function App() {
   const fetchCurrentUser = async () => {
     try {
       const currentUser = await User.current();
-      console.log(currentUser);
       if (currentUser?.id) {
         setUser(currentUser);
       } else {
@@ -50,8 +49,6 @@ function App() {
   const signOut = () => {
     setUser(null);
   };
-
-  console.log(isFetchComplete);
 
   if (!isFetchComplete) {
     return <div>Loading...</div>;

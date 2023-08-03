@@ -55,7 +55,6 @@ const TransactionCreate = () => {
 
   const handleAddTransaction = useCallback(async () => {
     try {
-      console.log('Submitting transaction...');
       const newTransaction = await Transaction.create({
         amount: Number(amount),
         date,
@@ -69,7 +68,6 @@ const TransactionCreate = () => {
       } else {
         navigate(`/transactions`, { replace: true });
       }
-      console.log('Transaction created:', newTransaction);
     } catch (error) {
       console.error('Error creating transaction:', error);
     } finally {
@@ -81,8 +79,6 @@ const TransactionCreate = () => {
       setCategoryId('');
     }
   }, [amount, date, description, currency, category_id, navigate]);
-
-  console.log('Categories:', categories);
 
   return (
     <div className="flex items-end justify-center">

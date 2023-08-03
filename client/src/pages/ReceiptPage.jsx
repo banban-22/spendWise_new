@@ -78,15 +78,3 @@ const ReceiptPage = () => {
 };
 
 export default ReceiptPage;
-
-//     if (response.ok) {
-//       const ocr_result = await response.json();
-//       const extracted_text = ocr_result['ParsedResults'][0]['ParsedText'];
-//       setResult(extracted_text);
-//     } else {
-//       setResult('Error occurred while processing the receipt.');
-//     }
-//   } catch (error) {
-//     setResult('Error occurred while processing the receipt.');
-//   }
-// };

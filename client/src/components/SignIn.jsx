@@ -42,7 +42,6 @@ const SignIn = ({
 
     try {
       const response = await Session.create(request);
-      console.log(response);
       if (response.status === 401) {
         setErrors([{ message: response.message }]);
       } else if (response?.id) {

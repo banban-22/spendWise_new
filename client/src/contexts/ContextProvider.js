@@ -4,6 +4,7 @@ const StateContext = createContext();
 const initialState = {
   userProfile: false,
 };
+
 export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);

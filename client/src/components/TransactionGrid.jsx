@@ -21,8 +21,6 @@ const TransactionGrid = ({
   updatedDataInDatabase,
   deleteDataInDatabase,
 }) => {
-  console.log(transactionData);
-
   const categoriesMap = {};
   categories.forEach((category) => {
     categoriesMap[category.id] = category.name;
@@ -35,10 +33,6 @@ const TransactionGrid = ({
 
   const handleGridActionBegin = (args) => {
     const { requestType, action, data } = args;
-
-    console.log('Request Type:', requestType);
-    console.log('Action:', action);
-    console.log('Data:', data);
 
     if (requestType === 'save' && action === 'edit' && data) {
       const updatedData = Array.isArray(data) ? data[0] : data;
