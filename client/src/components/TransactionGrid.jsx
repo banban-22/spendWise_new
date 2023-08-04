@@ -1,15 +1,16 @@
-import React, { useMemo } from 'react';
+import * as React from 'react';
 import {
-  GridComponent,
-  ColumnsDirective,
   ColumnDirective,
+  ColumnsDirective,
+  GridComponent,
+} from '@syncfusion/ej2-react-grids';
+import {
   Inject,
   Resize,
   Sort,
   ContextMenu,
   Filter,
   Page,
-  ExcelExport,
   Edit,
   PdfExport,
   Toolbar,
@@ -48,25 +49,32 @@ const TransactionGrid = ({
     }
   };
 
+  let grid;
+  const toolbar = ['Delete', 'PdfExport'];
+  const toolbarClick = (args) => {
+    if (grid && args.item.id === 'grid_pdfexport') {
+      grid.pdfExport();
+    }
+  };
+
   return (
     <div>
       <GridComponent
+        id="grid"
         dataSource={enrichedTransactionData}
         allowPaging={true}
         allowSorting={true}
-        toolbar={['Delete']}
+        allowPdfExport={true}
+        toolbar={toolbar}
+        toolbarClick={toolbarClick}
         editSettings={{ allowDeleting: true, allowEditing: true }}
         actionBegin={handleGridActionBegin}
         filterSettings={{ type: 'Menu' }}
         allowFiltering={true}
         width="auto"
+        ref={(g) => (grid = g)}
       >
         <ColumnsDirective>
-          {/* <ColumnDirective
-            field="transaction_type"
-            headerText="Type"
-            width="100"
-          /> */}
           <ColumnDirective
             field="amount"
             headerText="Amount"
@@ -94,7 +102,7 @@ const TransactionGrid = ({
             ContextMenu,
             Filter,
             Page,
-            ExcelExport,
+
             Edit,
             PdfExport,
             Toolbar,
