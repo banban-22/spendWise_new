@@ -74,16 +74,27 @@ const ExpenseAmount = ({ selectedCategory }) => {
   };
 
   return (
-    <div className="flex justify-center flex-wrap">
+    <div className="grid grid-cols-4 gap-3 justify-center content-center items-center">
       {Object.entries(totalAmounts).map(([categoryName, amount]) => (
         <div
           key={categoryName}
-          className="bg-white shadow overflow-hidden rounded-lg p-5 w-52 mx-3 mb-3"
+          className="bg-white shadow overflow-hidden rounded-lg p-5 w-auto mx-3 mb-3"
         >
-          <div className="w-5 h-5">{categoryIcons[categoryName]}</div>
-          <h2>{categoryName}</h2>
-          <p>{transactionData.length > 0 ? transactionData[0].currency : ''}</p>
-          <p>{amount.toLocaleString('en-US')}</p>
+          <div className="flex justify-start items-center">
+            <div className="w-5 h-5">{categoryIcons[categoryName]}</div>
+            <h2>{categoryName}</h2>
+          </div>
+
+          {amount ? (
+            <div className="flex justify-start items-center">
+              <p>
+                {transactionData.length > 0 ? transactionData[0].currency : ''}
+              </p>
+              <p className="ml-3 text-xl">{amount.toLocaleString('en-US')}</p>
+            </div>
+          ) : (
+            <p>N/A</p>
+          )}
         </div>
       ))}
     </div>
