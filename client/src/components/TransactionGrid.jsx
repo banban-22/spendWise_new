@@ -62,11 +62,11 @@ const TransactionGrid = ({
         width="auto"
       >
         <ColumnsDirective>
-          <ColumnDirective
+          {/* <ColumnDirective
             field="transaction_type"
             headerText="Type"
             width="100"
-          />
+          /> */}
           <ColumnDirective
             field="amount"
             headerText="Amount"

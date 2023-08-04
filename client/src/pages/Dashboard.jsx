@@ -1,11 +1,13 @@
 import React from 'react';
 import PieChart from '../components/Charts/PieChart';
+import ExpenseAmount from '../components/Charts/ExpenseAmount';
 
 const Dashboard = () => {
   return (
-    <div>
+    <>
+      <ExpenseAmount />
       <PieChart />
-    </div>
+    </>
   );
 };
 

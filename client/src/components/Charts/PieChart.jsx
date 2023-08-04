@@ -50,7 +50,7 @@ const PieChart = () => {
   const pieChartData = Object.keys(groupedData).map((categoryName) => {
     return { x: categoryName, y: parseFloat(groupedData[categoryName]) };
   });
-  
+
   return (
     <div>
       <AccumulationChartComponent
