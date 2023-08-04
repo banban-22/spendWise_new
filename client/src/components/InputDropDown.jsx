@@ -36,6 +36,7 @@ const InputDropDown = (props) => {
         onChange={onChange}
         value={value}
       >
+        <option value="">--</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
