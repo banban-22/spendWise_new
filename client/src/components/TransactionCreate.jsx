@@ -64,13 +64,6 @@ const TransactionCreate = () => {
 
   const handleAddTransaction = useCallback(async () => {
     try {
-      // if (
-      //   !transaction_type ||
-      //   !['expenditure', 'income'].includes(transaction_type)
-      // ) {
-      //   throw new Error('Please select a valid transaction type.');
-      // }
-
       const newTransaction = await Transaction.create({
         transaction_type,
         amount: Number(amount),
@@ -79,11 +72,6 @@ const TransactionCreate = () => {
         currency,
         category_id: Number(category_id),
       });
-      console.log('newTransaction:', newTransaction);
-
-      // if (type === 'expenditure') {
-      // } else if (type === 'income') {
-      // }
 
       if (newTransaction.errors) {
         throw new Error(newTransaction.errors);
