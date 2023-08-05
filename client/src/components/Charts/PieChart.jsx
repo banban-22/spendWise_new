@@ -3,11 +3,11 @@ import {
   AccumulationChartComponent,
   AccumulationSeriesCollectionDirective,
   AccumulationSeriesDirective,
+  Inject,
   AccumulationLegend,
   PieSeries,
-  Inject,
-  AccumulationDataLabel,
   AccumulationTooltip,
+  AccumulationDataLabel,
 } from '@syncfusion/ej2-react-charts';
 import { useStateContext } from '../../contexts/ContextProvider';
 import { Transaction, Category } from '../../requests';
@@ -47,6 +47,7 @@ const PieChart = () => {
     return acc;
   }, {});
 
+  let pieChart;
   const pieChartData = Object.keys(groupedData).map((categoryName) => {
     return { x: categoryName, y: parseFloat(groupedData[categoryName]) };
   });
@@ -55,36 +56,36 @@ const PieChart = () => {
     <div>
       <AccumulationChartComponent
         id="chart-pie"
+        ref={(pie) => (pie = pieChart)}
         legendSettings={{ visible: true, background: 'white' }}
-        height="full"
+        enableSmartLabels={true}
         tooltip={{ enable: true }}
+        height="full"
       >
         <Inject
           services={[
             AccumulationLegend,
             PieSeries,
-            AccumulationDataLabel,
             AccumulationTooltip,
+            AccumulationDataLabel,
           ]}
         />
         <AccumulationSeriesCollectionDirective>
           <AccumulationSeriesDirective
             name="Expenses"
             dataSource={pieChartData}
+            explode={true}
             xName="x"
             yName="y"
-            innerRadius="40%"
-            startAngle={0}
-            endAngle={360}
-            radius="70%"
-            explode
+            radius="60%"
             explodeOffset="10%"
-            explodeIndex={2}
+            explodeIndex={0}
+            pointColorMapping="fill"
             dataLabel={{
               visible: true,
               name: 'x',
-              position: 'Inside',
-              font: { color: 'white' },
+              position: 'Outside',
+              font: { color: '#000', fontWeight: '600' },
             }}
           />
         </AccumulationSeriesCollectionDirective>

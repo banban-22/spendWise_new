@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from '../components/Button';
 
 const ENDPOINT = 'https://api.ocr.space/parse/image';
 const API_KEY = process.env.REACT_APP_RECEIPT_API_KEY;
@@ -21,7 +22,7 @@ const ReceiptPage = () => {
   const handleOCR = async () => {
     if (!selectedImage) {
       setResult([]);
-      alert('Please select an image first.');
+      alert('Please select an image first');
       return;
     }
 
@@ -50,28 +51,49 @@ const ReceiptPage = () => {
       alert('Error occurred while processing the receipt.');
     }
   };
+  console.log(result);
 
   return (
-    <div>
-      <input type="file" alt="receipt_image" onChange={handleFileChange} />
-      <button onClick={handleOCR}>Submit</button>
-      <div>
-        <h2>OCR Result:</h2>
-        {result.length > 0 ? (
-          <table>
-            <tbody>
-              {result.map((row, rowIndex) => (
-                <tr key={rowIndex}>
-                  {row.map((cell, cellIndex) => (
-                    <td key={cellIndex}>{cell}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p>No table data found in the OCR result.</p>
-        )}
+    <div className="flex flex-col justify-center align-center">
+      <div className="flex justify-center align-center">
+        <input
+          type="file"
+          alt="receipt_image"
+          className="bg-white p-2 rounded-lg mr-5"
+          onChange={handleFileChange}
+        />
+        <Button
+          bgColor="orange"
+          hoverBgColor="amber-200"
+          customWidth={'auto'}
+          onClick={handleOCR}
+          roundedSm={true}
+          btnPadding={8}
+        >
+          Submit
+        </Button>
+      </div>
+      <div className="flex flex-col justify-center align-center text-center mt-10">
+        <h2 className="text-xl">Result:</h2>
+        <div className="mx-auto">
+          {result.length > 0 ? (
+            <table className="border mt-8">
+              <tbody className="border">
+                {result.map((row, rowIndex) => (
+                  <tr key={rowIndex} className="border">
+                    {row.map((cell, cellIndex) => (
+                      <td key={cellIndex} className="border">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p className="capitalize">No data found</p>
+          )}
+        </div>
       </div>
     </div>
   );
