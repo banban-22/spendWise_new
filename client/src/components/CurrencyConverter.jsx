@@ -110,7 +110,8 @@ const CurrencyConverter = () => {
             <p className="text-xl">
               Price:
               <span className="text-3xl font-bold ml-3">
-                {exchangeRate.conversion_rate * currencyAmount} {toCurrency}
+                {(exchangeRate.conversion_rate * currencyAmount).toFixed(2)}{' '}
+                {toCurrency}
               </span>
             </p>
           </div>

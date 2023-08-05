@@ -48,7 +48,7 @@ const TransactionPage = () => {
   };
 
   return (
-    <div>
+    <div className="m-3">
       <div className="mb-10">
         <p className="text-3xl font-extrabold tracking-tight text-secondary">
           Transaction

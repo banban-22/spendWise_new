@@ -88,21 +88,21 @@ const ExpenseAmount = ({ selectedCategory }) => {
       <div className="grid grid-cols-2">
         <div className="bg-white shadow overflow-hidden rounded-lg p-5 w-auto mx-3 mb-3 text-center">
           <p className="text-xl">Total Expense</p>
-          <p className="text-3xl font-bold flex justify-center">
+          <div className="text-3xl font-bold flex justify-center">
             <p className="mr-2">
               {transactionData.length > 0 ? transactionData[0].currency : ''}
             </p>
             {totalExpense.toLocaleString('en-US')}
-          </p>
+          </div>
         </div>
         <div className="bg-white shadow overflow-hidden rounded-lg p-5 w-auto mx-3 mb-3 text-center">
           <p className="text-xl">Total Income</p>
-          <p className="text-3xl font-bold flex justify-center">
+          <div className="text-3xl font-bold flex justify-center">
             <p className="mr-2">
               {transactionData.length > 0 ? transactionData[0].currency : ''}
             </p>
             {totalIncome.toLocaleString('en-US')}
-          </p>
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-4 gap-3 justify-center content-center items-center">

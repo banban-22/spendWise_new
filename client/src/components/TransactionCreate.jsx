@@ -11,7 +11,7 @@ const TransactionCreate = () => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
-  const [currency, setCurrency] = useState('');
+  const [currency, setCurrency] = useState('CAD');
   const [category_id, setCategoryId] = useState('');
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
