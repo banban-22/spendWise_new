@@ -9,7 +9,7 @@ import {
   AccumulationTooltip,
   AccumulationDataLabel,
 } from '@syncfusion/ej2-react-charts';
-import { useStateContext } from '../../contexts/ContextProvider';
+// import { useStateContext } from '../../contexts/ContextProvider';
 import { Transaction, Category } from '../../requests';
 
 const PieChart = () => {
@@ -53,14 +53,15 @@ const PieChart = () => {
   });
 
   return (
-    <div>
+    <div className="bg-white rounded-lg p-1 shadow">
       <AccumulationChartComponent
         id="chart-pie"
         ref={(pie) => (pie = pieChart)}
         legendSettings={{ visible: true, background: 'white' }}
         enableSmartLabels={true}
         tooltip={{ enable: true }}
-        height="full"
+        height="auto"
+        width="auto"
       >
         <Inject
           services={[

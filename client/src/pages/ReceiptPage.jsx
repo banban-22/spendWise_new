@@ -20,6 +20,7 @@ const ReceiptPage = () => {
   };
 
   const handleOCR = async () => {
+    console.log(selectedImage);
     if (!selectedImage) {
       setResult([]);
       alert('Please select an image first');
@@ -55,6 +56,7 @@ const ReceiptPage = () => {
 
   return (
     <div className="flex flex-col justify-center align-center">
+      <p className="text-center">*Please put the image under 1024KB</p>
       <div className="flex justify-center align-center">
         <input
           type="file"
