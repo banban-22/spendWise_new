@@ -5,6 +5,8 @@ import ApexCharts from 'react-apexcharts';
 const BarChart = () => {
   const [transactionData, setTransactionData] = useState([]);
   const [errors, setErrors] = useState([]);
+  const currency =
+    transactionData.length > 0 ? transactionData[0].currency : '';
 
   useEffect(() => {
     Transaction.index()
@@ -48,11 +50,21 @@ const BarChart = () => {
   const options = {
     chart: {
       id: 'bar-chart',
+      type: 'bar',
+      defaultLocale: 'en',
     },
     xaxis: {
-      type: 'category',
+      type: 'month',
       labels: {
         rotate: -45,
+      },
+      title: {
+        text: 'Month/Year',
+      },
+    },
+    yaxis: {
+      title: {
+        text: `Total Expense (${currency})`,
       },
     },
   };
@@ -66,7 +78,7 @@ const BarChart = () => {
 
   return (
     <div className="bg-white rounded-lg p-1 shadow">
-      <ApexCharts options={options} series={series} type="bar" height={350} />
+      <ApexCharts options={options} series={series} type="bar" height={450} />
     </div>
   );
 };
