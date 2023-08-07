@@ -22,17 +22,17 @@ const BarChart = () => {
     const totalExpense = {};
 
     transactions.forEach((transaction) => {
-      const [year, month] = transaction.date.split('-');
-      const monthYear = `${month}/${year}`;
+      if (transaction.transaction_type === 'expenditure') {
+        const [year, month] = transaction.date.split('-');
+        const monthYear = `${month}/${year}`;
 
-      const amount =
-        Number(transaction.amount) *
-        (transaction.transaction_type === 'income' ? 1 : -1);
+        const amount = Number(transaction.amount);
 
-      if (!totalExpense[monthYear]) {
-        totalExpense[monthYear] = amount;
-      } else {
-        totalExpense[monthYear] += amount;
+        if (!totalExpense[monthYear]) {
+          totalExpense[monthYear] = amount;
+        } else {
+          totalExpense[monthYear] += amount;
+        }
       }
     });
 
@@ -65,6 +65,25 @@ const BarChart = () => {
     yaxis: {
       title: {
         text: `Total Expense (${currency})`,
+      },
+    },
+    annotations: {},
+    noData: {
+      text: 'Loading...',
+      align: 'center',
+      verticalAlign: 'middle',
+    },
+    bar: {
+      columnWidth: '100%',
+      barHeight: '100%',
+      colors: {
+        ranges: [
+          {
+            from: -1000,
+            to: 0,
+            color: '#F15B46',
+          },
+        ],
       },
     },
   };
