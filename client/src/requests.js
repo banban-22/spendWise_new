@@ -64,6 +64,30 @@ export const Category = {
   },
 };
 
+// export const Transaction = {
+//   index() {
+//     return webApi.get('transactions');
+//   },
+//   create(body) {
+//     return webApi.request('transactions', body, 'POST');
+//   },
+//   update(id, body) {
+//     return webApi.request(`transactions/${id}`, body, 'PATCH');
+//   },
+//   destroy(id) {
+//     return webApi.request(`transactions/${id}`, {}, 'DELETE');
+//   },
+// };
+
+// export const Category = {
+//   index() {
+//     return webApi.get('categories');
+//   },
+//   create(body) {
+//     return webApi.request('categories', body, 'POST');
+//   },
+// };
+
 export const Session = {
   create(requestBody) {
     return webApi.request('session', requestBody);

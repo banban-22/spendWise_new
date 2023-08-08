@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   ColumnDirective,
   ColumnsDirective,
@@ -15,6 +15,8 @@ import {
   PdfExport,
   Toolbar,
 } from '@syncfusion/ej2-react-grids';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import { Transaction } from '../requests';
 
 const TransactionGrid = ({
   transactionData,
@@ -23,20 +25,18 @@ const TransactionGrid = ({
   deleteDataInDatabase,
 }) => {
   const categoriesMap = {};
-  categories.forEach((category) => {
-    categoriesMap[category.id] = category.name;
-  });
 
-  const enrichedTransactionData = transactionData.map((transaction) => ({
-    ...transaction,
-    category: categoriesMap[transaction.category_id],
-  }));
+  if (categories && categories.length > 0) {
+    categories.forEach((category) => {
+      categoriesMap[category.id] = category.name;
+    });
+  }
 
-  const handleGridActionBegin = (args) => {
+  const handleGridActionBegin = async (args) => {
     const { requestType, action, data } = args;
 
     if (requestType === 'save' && action === 'edit' && data) {
-      const updatedData = Array.isArray(data) ? data[0] : data;
+      const updatedData = data;
       if (updatedData.id) {
         updatedDataInDatabase(updatedData);
       }
@@ -49,8 +49,20 @@ const TransactionGrid = ({
     }
   };
 
+  const newTransactionData = transactionData.map((transaction) => {
+    if (transaction.category_id) {
+      const categoryName = categoriesMap[transaction.category_id] || '';
+
+      return {
+        ...transaction,
+        category: categoryName,
+      };
+    }
+  });
+
+  const toolbar = ['Edit', 'Delete', 'PdfExport'];
   let grid;
-  const toolbar = ['Delete', 'PdfExport'];
+
   const toolbarClick = (args) => {
     if (grid && args.item.id === 'grid_pdfexport') {
       grid.pdfExport();
@@ -60,14 +72,17 @@ const TransactionGrid = ({
   return (
     <div>
       <GridComponent
-        id="grid"
-        dataSource={enrichedTransactionData}
+        dataSource={newTransactionData}
         allowPaging={true}
         allowSorting={true}
         allowPdfExport={true}
         toolbar={toolbar}
         toolbarClick={toolbarClick}
-        editSettings={{ allowDeleting: true, allowEditing: true }}
+        editSettings={{
+          allowDeleting: true,
+          allowEditing: true,
+          mode: 'Normal',
+        }}
         actionBegin={handleGridActionBegin}
         filterSettings={{ type: 'Menu' }}
         allowFiltering={true}
@@ -80,14 +95,25 @@ const TransactionGrid = ({
             headerText="Amount"
             width="100"
             template={(cellData) => {
-              const transaction_type = cellData.transaction_type;
               const amount = cellData.amount;
-              const textColor = transaction_type === 'income' ? 'green' : 'red';
+              const textColor =
+                cellData.transaction_type === 'income' ? 'green' : 'red';
               return <span style={{ color: textColor }}>{amount}</span>;
             }}
           />
           <ColumnDirective field="currency" headerText="Currency" width="100" />
-          <ColumnDirective field="category" headerText="Category" width="100" />
+          <ColumnDirective
+            field="category_id"
+            headerText="CategoryID"
+            width="100"
+            editType="dropdownedit"
+          />
+          <ColumnDirective
+            field="category"
+            headerText="Category"
+            width="100"
+            editType="dropdownedit"
+          />
           <ColumnDirective field="date" headerText="Date" width="100" />
           <ColumnDirective
             field="description"
@@ -102,7 +128,6 @@ const TransactionGrid = ({
             ContextMenu,
             Filter,
             Page,
-
             Edit,
             PdfExport,
             Toolbar,

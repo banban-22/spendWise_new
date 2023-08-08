@@ -38,6 +38,24 @@ const TransactionPage = () => {
     }
   };
 
+  // const updatedDataInDatabase = async (updatedData) => {
+  //   try {
+  //     const response = await Transaction.update(updatedData.id, updatedData);
+  //     console.log('updatedData', response);
+
+  //     const updatedIndex = transactionData.findIndex(
+  //       (transaction) => transaction.id === updatedData.id
+  //     );
+  //     if (updatedIndex !== -1) {
+  //       const updatedTransactionData = [...transactionData];
+  //       updatedTransactionData[updatedIndex] = response.transaction;
+  //       setTransactionData(updatedTransactionData);
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   const deleteDataInDatabase = async (deleteData) => {
     try {
       const response = await Transaction.destroy(deleteData.id);

@@ -79,7 +79,7 @@ const BarChart = () => {
       colors: {
         ranges: [
           {
-            from: -1000,
+            from: -5000,
             to: 0,
             color: '#F15B46',
           },
