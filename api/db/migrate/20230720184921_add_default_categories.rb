@@ -11,6 +11,7 @@ class AddDefaultCategories < ActiveRecord::Migration[7.0]
       { name: "Personal Spending" },
       { name: "Recreation & Entertainment" },
       { name: "Miscellaneous" },
+      { name: "Income"}
     ]
 
     default_categories.each do |category_params|

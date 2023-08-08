@@ -6,7 +6,8 @@ class TransactionSerializer < ActiveModel::Serializer
     attributes :id, :first_name, :last_name, :email, :full_name
   end
 
-  has_many :categories, key: :categories
+  # has_many :categories, key: :categories
+  belongs_to :category, key: :category
   class CategorySerializer < ActiveModel::Serializer
     attributes :id, :name, :user
   end
