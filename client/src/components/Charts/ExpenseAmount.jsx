@@ -12,6 +12,7 @@ import { GrMoney } from 'react-icons/gr';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
 import { BiCameraMovie } from 'react-icons/bi';
 import { AiOutlineTool } from 'react-icons/ai';
+import { TbPigMoney } from 'react-icons/tb';
 
 const ExpenseAmount = ({ selectedCategory }) => {
   const [transactionData, setTransactionData] = useState([]);
@@ -123,6 +124,7 @@ const ExpenseAmount = ({ selectedCategory }) => {
     'Personal spending': <HiOutlineShoppingBag />,
     'Recreation & entertainment': <BiCameraMovie />,
     Miscellaneous: <PiDotsThreeCircleLight />,
+    Income: <TbPigMoney />,
   };
   console.log(transactionData);
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import TransactionCreate from '../components/TransactionCreate';
 import TransactionGrid from '../components/TransactionGrid';
 import { Transaction, Category, User } from '../requests';
+import Loading from '../components/Loading';
 
 const TransactionPage = () => {
   const [transactionData, setTransactionData] = useState([]);
@@ -89,7 +90,7 @@ const TransactionPage = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading isLoading={isLoading} />;
   }
 
   if (hasError) {

@@ -13,6 +13,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import AuthRoute from './components/AuthRoute';
 import NotFoundPage from './pages/NotFoundPage';
+import Loading from './components/Loading';
 
 import { useStateContext } from './contexts/ContextProvider';
 
@@ -21,6 +22,7 @@ import './App.css';
 function App() {
   const [user, setUser] = useState(null);
   const [isFetchComplete, setIsFetchComplete] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { activeMenu } = useStateContext();
 
   const fetchCurrentUser = async () => {
@@ -51,7 +53,7 @@ function App() {
   };
 
   if (!isFetchComplete) {
-    return <div>Loading...</div>;
+    return <Loading isLoading={isLoading} />;
   }
 
   return (
