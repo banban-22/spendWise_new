@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Transaction } from '../../requests';
+import { Transaction, User } from '../../requests';
 import ApexCharts from 'react-apexcharts';
 
 const BarChart = () => {
@@ -7,6 +7,56 @@ const BarChart = () => {
   const [errors, setErrors] = useState([]);
   const currency =
     transactionData.length > 0 ? transactionData[0].currency : '';
+
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    getCurrentUser();
+    fetchTransactions();
+  }, []);
+
+  const getCurrentUser = () => {
+    User.current()
+      .then((userData) => {
+        if (userData?.id) {
+          setUser(userData);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setHasError(true);
+      });
+  };
+
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
+  useEffect(() => {
+    if (user?.id) {
+      fetchTransactions();
+    }
+  }, [user]);
+
+  const fetchTransactions = () => {
+    if (user?.id) {
+      Transaction.index()
+        .then((data) => {
+          const userTransactions = data.filter(
+            (transaction) => transaction.user_id === user.id
+          );
+          setTransactionData(userTransactions);
+        })
+        .catch((err) => {
+          setHasError(true);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  };
 
   useEffect(() => {
     Transaction.index()
@@ -69,7 +119,7 @@ const BarChart = () => {
     },
     annotations: {},
     noData: {
-      text: 'Loading...',
+      text: 'No expense data available.',
       align: 'center',
       verticalAlign: 'middle',
     },
