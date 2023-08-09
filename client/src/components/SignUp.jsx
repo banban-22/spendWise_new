@@ -3,8 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import Input from './Input';
 import Button from './Button';
 import { SiMoneygram } from 'react-icons/si';
+import { User, Session } from '../requests';
 
-const SignUp = ({ formBorderColor, formWidth, roundedSm, btnPadding }) => {
+const SignUp = ({
+  formBorderColor,
+  formWidth,
+  roundedSm,
+  btnPadding,
+  onSignUp,
+}) => {
   const [user, setUser] = useState({
     first_name: '',
     last_name: '',
@@ -12,6 +19,7 @@ const SignUp = ({ formBorderColor, formWidth, roundedSm, btnPadding }) => {
     password: '',
     password_confirmation: '',
   });
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -22,9 +30,24 @@ const SignUp = ({ formBorderColor, formWidth, roundedSm, btnPadding }) => {
       [name]: value,
     }));
   };
+  console.log(user);
 
-  const handleClick = (event) => {
-    navigate('/dashboard');
+  const handleClick = async (event) => {
+    event.preventDefault();
+    try {
+      const res = await User.create({ user });
+      if (res.status === 422) {
+        setErrors([{ message: res.message }]);
+      } else {
+        const { email, password } = user;
+        await Session.create({ email, password });
+        onSignUp();
+        navigate('/dashboard');
+      }
+    } catch (error) {
+      console.error(error);
+      setErrors(JSON.parse(error.message));
+    }
   };
 
   const { first_name, last_name, email, password, password_confirmation } =

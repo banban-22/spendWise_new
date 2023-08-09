@@ -83,7 +83,11 @@ function App() {
               />
             }
           />
-          <Route exact path="/signup" element={<SignUp />} />
+          <Route
+            exact
+            path="/signup"
+            element={<SignUp onSignUp={fetchCurrentUser} />}
+          />
           {isUserSignedIn() && (
             <>
               <Route path="/dashboard" element={<Dashboard />} />

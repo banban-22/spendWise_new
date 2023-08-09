@@ -15,8 +15,6 @@ import {
   PdfExport,
   Toolbar,
 } from '@syncfusion/ej2-react-grids';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { Transaction } from '../requests';
 
 const TransactionGrid = ({
   transactionData,
