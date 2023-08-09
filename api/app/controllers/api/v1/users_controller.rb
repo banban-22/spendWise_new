@@ -47,4 +47,10 @@ end
       :password_confirmation
     )
   end
+
+  def find_user
+    @user = User.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { status: :not_found, message: "User not found" }, status: 404
+  end
 end
