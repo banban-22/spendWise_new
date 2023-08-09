@@ -17,3 +17,9 @@ body {
 .border-color {
   border: #eef1f2 solid;
 }
+
+#pie-charts {
+  background-color: #fff;
+  opacity: 0.5;
+  color: #000;
+}
