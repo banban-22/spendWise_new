@@ -7,7 +7,7 @@ const Dashboard = ({ isLoading }) => {
   return (
     <>
       <ExpenseAmount isLoading={isLoading} />
-      <div className="grid grid-cols-2 gap-5 justify-around mx-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 justify-around mx-5">
         <PieChart />
         <BarChart />
       </div>

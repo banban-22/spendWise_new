@@ -17,7 +17,6 @@ import { TbPigMoney } from 'react-icons/tb';
 const ExpenseAmount = ({ selectedCategory }) => {
   const [transactionData, setTransactionData] = useState([]);
   const [categories, setCategories] = useState([]);
-  //   const [selectedCategory, setSelectedCategory] = useState('');
   const [errors, setErrors] = useState(null);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -130,7 +129,7 @@ const ExpenseAmount = ({ selectedCategory }) => {
 
   return (
     <>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="bg-white shadow overflow-hidden rounded-lg p-5 w-auto mx-3 mb-3 text-center">
           <p className="text-xl">Total Expense</p>
           <div className="text-3xl font-bold flex justify-center">
@@ -150,7 +149,7 @@ const ExpenseAmount = ({ selectedCategory }) => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-4 gap-3 justify-center content-center items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 justify-center content-center items-center">
         {Object.entries(totalAmounts).map(([categoryName, amount]) => (
           <div
             key={categoryName}

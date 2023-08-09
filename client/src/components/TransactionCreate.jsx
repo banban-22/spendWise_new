@@ -100,7 +100,7 @@ const TransactionCreate = () => {
   ]);
 
   return (
-    <div className="flex items-end justify-center">
+    <div className="flex flex-col lg:flex-row lg:items-end justify-center">
       <InputDropDown
         placeholder="Type"
         name="transaction_type"
