@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Transaction, Category } from '../../requests';
+import { Transaction, Category, User } from '../../requests';
 import { GiHealthNormal } from 'react-icons/gi';
 import {
   PiHouseLine,
@@ -18,24 +18,67 @@ const ExpenseAmount = ({ selectedCategory }) => {
   const [categories, setCategories] = useState([]);
   //   const [selectedCategory, setSelectedCategory] = useState('');
   const [errors, setErrors] = useState(null);
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    Transaction.index()
-      .then((data) => {
-        setTransactionData(data);
+    getCurrentUser();
+    fetchTransactions();
+    fetchCategories();
+  }, []);
+
+  const getCurrentUser = () => {
+    User.current()
+      .then((userData) => {
+        if (userData?.id) {
+          setUser(userData);
+        }
       })
       .catch((err) => {
-        setErrors(err);
+        console.log(err);
+        setHasError(true);
       });
+  };
 
+  useEffect(() => {
+    getCurrentUser();
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    if (user?.id) {
+      fetchTransactions();
+    }
+  }, [user]);
+
+  const fetchTransactions = () => {
+    if (user?.id) {
+      Transaction.index()
+        .then((data) => {
+          const userTransactions = data.filter(
+            (transaction) => transaction.user_id === user.id
+          );
+          setTransactionData(userTransactions);
+        })
+        .catch((err) => {
+          setHasError(true);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  };
+
+  const fetchCategories = () => {
     Category.index()
       .then((data) => {
         setCategories(data);
       })
       .catch((err) => {
-        setErrors(err);
+        setHasError(true);
       });
-  }, []);
+  };
 
   const calculateTotalAmounts = () => {
     const totalAmounts = {};

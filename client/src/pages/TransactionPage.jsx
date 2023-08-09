@@ -82,18 +82,18 @@ const TransactionPage = () => {
     try {
       const response = await Transaction.destroy(deleteData.id);
       console.log('deleteData', response);
-      fetchTransactions(); // Refresh transactions after deletion
+      fetchTransactions();
     } catch (error) {
       console.error(error);
     }
   };
 
   if (isLoading) {
-    return <div>Loading...</div>; // Show loading indicator
+    return <div>Loading...</div>;
   }
 
   if (hasError) {
-    return <div>Error fetching data</div>; // Show error message
+    return <div>Error fetching data</div>;
   }
 
   return (
