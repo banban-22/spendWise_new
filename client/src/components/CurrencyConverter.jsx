@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Input from './Input';
 import InputDropDown from './InputDropDown';
 import Button from './Button';
-import { FiArrowRightCircle } from 'react-icons/fi';
+import { FiArrowRightCircle, FiArrowDownCircle } from 'react-icons/fi';
 import Loading from './Loading';
 
 const CurrencyConverter = () => {
@@ -12,6 +12,7 @@ const CurrencyConverter = () => {
   const [currencies, setCurrencies] = useState([]);
   const [exchangeRate, setExchangeRate] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const isMediumScreen = window.innerWidth <= 1024;
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -73,8 +74,11 @@ const CurrencyConverter = () => {
   return (
     <div className="flex flex-col content-center items-center">
       {isLoading && <Loading isLoading={isLoading} />}
-      <div className="flex flex-col bg-white p-16 mx-10 rounded-xl shadow-lg">
-        <div className="flex justify-around items-center mb-10">
+      <p className="text-3xl font-extrabold tracking-tight text-secondary mt-20 md:mt-0">
+        Currency Converter
+      </p>
+      <div className="flex flex-col bg-white p-16 mx-10 rounded-xl shadow-lg mt-10">
+        <div className="flex flex-col lg:flex-row justify-around items-center mb-10 ">
           <Input
             type="number"
             placeholder="Amount"
@@ -91,7 +95,11 @@ const CurrencyConverter = () => {
             onChange={handleInputChange}
             className="rounded-lg"
           />
-          <FiArrowRightCircle className="text-3xl mt-8" />
+          {isMediumScreen ? (
+            <FiArrowDownCircle className="text-3xl mt-8" />
+          ) : (
+            <FiArrowRightCircle className="text-3xl mt-8" />
+          )}
           <InputDropDown
             placeholder="To"
             name="toCurrency"
@@ -113,7 +121,7 @@ const CurrencyConverter = () => {
           Add To Transaction
         </Button>
       </div>
-      <div className="mt-10 flex flex-col align-center items-center bg-orange shadow-xl rounded-2xl py-10 w-1/2">
+      <div className="mt-10 flex flex-col align-center items-center bg-orange shadow-xl rounded-2xl py-10 w-3/4 lg:w-1/2">
         <h2 className="text-2xl">
           Exchange Rate:{' '}
           <span className="text-3xl font-bold">{fromCurrency}</span> to{' '}

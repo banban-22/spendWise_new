@@ -98,9 +98,9 @@ const TransactionPage = () => {
   }
 
   return (
-    <div className="m-3">
-      <div className="mb-10">
-        <p className="text-3xl font-extrabold tracking-tight text-secondary">
+    <div className="p-3">
+      <div className="sm:mt-10 md:mt-0 md:mb-10">
+        <p className="text-3xl font-extrabold tracking-tight text-secondary mt-10 md:mt-0">
           Transaction
         </p>
       </div>
