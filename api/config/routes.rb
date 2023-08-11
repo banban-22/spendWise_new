@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      post '/auth/twitter', to: 'auth#twitter'
+      get '/auth/twitter/callback', to: 'auth#twitter_callback'
       resources :transactions, only: [:index, :show, :create, :update, :destroy] do
         resources :bills, only: [:index, :show, :create, :update, :destroy]
         resources :categories, only: [:index, :show, :create, :update, :destroy]

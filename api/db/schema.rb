@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_03_203853) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_10_231504) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,7 +42,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_203853) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
+    t.string "provider"
+    t.string "oauth_token"
+    t.string "oauth_secret"
+    t.string "oauth_raw_data"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider"
   end
 
   add_foreign_key "categories", "users"
