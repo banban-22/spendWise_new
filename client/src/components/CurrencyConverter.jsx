@@ -32,10 +32,6 @@ const CurrencyConverter = () => {
     }
   };
 
-  const addToTransaction = () => {
-    console.log('Add to transaction');
-  };
-
   useEffect(() => {
     const API_KEY = process.env.REACT_APP_CURRENCY_API_KEY;
     fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/codes`)
@@ -109,17 +105,6 @@ const CurrencyConverter = () => {
             className="rounded-lg"
           />
         </div>
-        <Button
-          bgColor="orange"
-          hoverBgColor="amber-200"
-          onClick={addToTransaction}
-          roundedSm={true}
-          btnPadding={8}
-          marginLeft={4}
-          marginTop={10}
-        >
-          Add To Transaction
-        </Button>
       </div>
       <div className="mt-10 flex flex-col align-center items-center bg-orange shadow-xl rounded-2xl py-10 w-3/4 lg:w-1/2">
         <h2 className="text-2xl">
