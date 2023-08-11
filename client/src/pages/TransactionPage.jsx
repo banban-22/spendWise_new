@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BaseCurrency from '../components/BaseCurrency';
 import TransactionCreate from '../components/TransactionCreate';
 import TransactionGrid from '../components/TransactionGrid';
 import { Transaction, Category, User } from '../requests';
@@ -99,11 +100,12 @@ const TransactionPage = () => {
 
   return (
     <div className="p-3">
-      <div className="sm:mt-10 md:mt-0 md:mb-10">
+      <div className="sm:mt-10 md:mt-0 md:mb-4">
         <p className="text-3xl font-extrabold tracking-tight text-secondary mt-10 md:mt-0">
           Transaction
         </p>
       </div>
+      <BaseCurrency />
       {/* TransactionCreateForm */}
       <TransactionCreate />
       {/* TransactionRecord */}
