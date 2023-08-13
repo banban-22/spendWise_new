@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import InputDropDown from './InputDropDown';
 
-const BaseCurrency = () => {
-  const [baseCurrency, setBaseCurrency] = useState([]);
+const BaseCurrency = ({ baseCurrency, onBaseCurrencyChange }) => {
+  const [baseCurrencyOptions, setBaseCurrencyOptions] = useState([]);
   const [selectedBaseCurrency, setSelectedBaseCurrency] = useState('');
 
   const handleInputChange = (event) => {
@@ -12,6 +12,7 @@ const BaseCurrency = () => {
       case 'baseCurrency':
         setSelectedBaseCurrency(value);
         localStorage.setItem('baseCurrency', value);
+        onBaseCurrencyChange(value);
         break;
 
       default:
@@ -31,25 +32,26 @@ const BaseCurrency = () => {
           })
         );
 
-        setBaseCurrency(formattedCurrencies);
+        setBaseCurrencyOptions(formattedCurrencies);
 
         const savedCurrency = localStorage.getItem('baseCurrency');
         if (savedCurrency) {
           setSelectedBaseCurrency(savedCurrency);
+          onBaseCurrencyChange(savedCurrency);
         }
       })
       .catch((error) => {
         console.error('Error fetching currencies:', error);
       });
-  }, []);
+  }, [onBaseCurrencyChange]);
 
   return (
-    <div className=" p-2 rounded-lg">
+    <div className="p-2 rounded-lg">
       <InputDropDown
         placeholder="Base Currency"
         name="baseCurrency"
         value={selectedBaseCurrency}
-        options={baseCurrency}
+        options={baseCurrencyOptions}
         onChange={handleInputChange}
         className="rounded-lg"
       />

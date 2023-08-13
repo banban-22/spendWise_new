@@ -6,15 +6,19 @@ import Input from './Input';
 import InputDropDown from './InputDropDown';
 import Button from './Button';
 
-const TransactionCreate = () => {
+const TransactionCreate = ({ baseCurrency }) => {
   const [transaction_type, setTransactionType] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
-  const [currency, setCurrency] = useState('CAD');
+  const [currency, setCurrency] = useState(baseCurrency);
   const [category_id, setCategoryId] = useState('');
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setCurrency(baseCurrency);
+  }, [baseCurrency]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -132,9 +136,9 @@ const TransactionCreate = () => {
         onChange={handleInputChange}
       />
       <Input
-        placeholder="Currency"
+        placeholder="Currency (Optional)"
         name="currency"
-        value={currency}
+        value={currency || baseCurrency}
         onChange={handleInputChange}
       />
       <InputDropDown

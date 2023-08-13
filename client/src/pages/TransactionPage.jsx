@@ -8,6 +8,7 @@ import Loading from '../components/Loading';
 const TransactionPage = () => {
   const [transactionData, setTransactionData] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [baseCurrency, setBaseCurrency] = useState('');
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -98,6 +99,10 @@ const TransactionPage = () => {
     return <div>Error fetching data</div>;
   }
 
+  const handleBaseCurrencyChange = (currency) => {
+    setBaseCurrency(currency);
+  };
+
   return (
     <div className="p-3">
       <div className="sm:mt-10 md:mt-0 md:mb-4">
@@ -105,15 +110,20 @@ const TransactionPage = () => {
           Transaction
         </p>
       </div>
-      <BaseCurrency />
+      <BaseCurrency
+        baseCurrency={baseCurrency}
+        onBaseCurrencyChange={handleBaseCurrencyChange}
+      />
       {/* TransactionCreateForm */}
-      <TransactionCreate />
+      <TransactionCreate baseCurrency={baseCurrency} />
       {/* TransactionRecord */}
       <TransactionGrid
         transactionData={transactionData}
+        setTransactionData={setTransactionData}
         categories={categories}
         updatedDataInDatabase={updatedDataInDatabase}
         deleteDataInDatabase={deleteDataInDatabase}
+        baseCurrency={baseCurrency}
       />
     </div>
   );
