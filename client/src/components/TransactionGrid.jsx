@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ColumnDirective,
   ColumnsDirective,
@@ -22,6 +22,7 @@ const TransactionGrid = ({
   updatedDataInDatabase,
   deleteDataInDatabase,
 }) => {
+  const [editingCategory, setEditingCategory] = useState(null);
   const categoriesMap = {};
 
   if (categories && categories.length > 0) {
@@ -46,6 +47,33 @@ const TransactionGrid = ({
       }
     }
   };
+
+  // const handleCategoryChange = (event) => {
+  //   const selectedCategoryName = event.target.value;
+  //   const selectedCategory = categories.find(
+  //     (category) => category.name === selectedCategoryName
+  //   );
+
+  //   if (selectedCategory) {
+  //     setEditingCategory(selectedCategory);
+  //   }
+  // };
+
+  // const editTemplate = (props) => {
+  //   return (
+  //     <select
+  //       value={editingCategory ? editingCategory.name : ''}
+  //       onChange={handleCategoryChange}
+  //     >
+  //       <option value="">Select Category</option>
+  //       {categories.map((category) => (
+  //         <option key={category.id} value={category.name}>
+  //           {category.name}
+  //         </option>
+  //       ))}
+  //     </select>
+  //   );
+  // };
 
   const newTransactionData = transactionData.map((transaction) => {
     if (transaction.category_id) {
@@ -110,12 +138,14 @@ const TransactionGrid = ({
             headerText="CategoryID"
             width="100"
             editType="dropdownedit"
+            visible={false}
           />
           <ColumnDirective
             field="category"
             headerText="Category"
             width="100"
             editType="dropdownedit"
+            // edit={editTemplate}
           />
           <ColumnDirective field="currency" headerText="Currency" width="100" />
         </ColumnsDirective>
