@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import {
   ColumnDirective,
   ColumnsDirective,
@@ -33,7 +33,7 @@ const TransactionGrid = ({
   const handleGridActionBegin = async (args) => {
     const { requestType, action, data } = args;
 
-    if (requestType === 'save' && action === 'edit' && data) {
+    if (requestType === 'save' && action === 'beginEdit' && data) {
       const updatedData = data;
       if (updatedData.id) {
         updatedDataInDatabase(updatedData);
