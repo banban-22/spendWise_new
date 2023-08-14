@@ -48,7 +48,7 @@ const BaseCurrency = ({ baseCurrency, onBaseCurrencyChange }) => {
   return (
     <div className="p-2 rounded-lg">
       <InputDropDown
-        placeholder="Base Currency"
+        placeholder="Your Currency"
         name="baseCurrency"
         value={selectedBaseCurrency}
         options={baseCurrencyOptions}

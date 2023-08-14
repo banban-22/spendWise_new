@@ -136,7 +136,7 @@ const TransactionCreate = ({ baseCurrency }) => {
         onChange={handleInputChange}
       />
       <Input
-        placeholder="Currency (Optional)"
+        placeholder="Currency"
         name="currency"
         value={currency || baseCurrency}
         onChange={handleInputChange}

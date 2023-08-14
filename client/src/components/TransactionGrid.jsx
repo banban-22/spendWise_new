@@ -99,7 +99,12 @@ const TransactionGrid = ({
               return <span style={{ color: textColor }}>{amount}</span>;
             }}
           />
-          <ColumnDirective field="currency" headerText="Currency" width="100" />
+          <ColumnDirective
+            field="description"
+            headerText="Description"
+            width="100"
+          />
+          <ColumnDirective field="date" headerText="Date" width="100" />
           <ColumnDirective
             field="category_id"
             headerText="CategoryID"
@@ -112,13 +117,9 @@ const TransactionGrid = ({
             width="100"
             editType="dropdownedit"
           />
-          <ColumnDirective field="date" headerText="Date" width="100" />
-          <ColumnDirective
-            field="description"
-            headerText="Description"
-            width="100"
-          />
+          <ColumnDirective field="currency" headerText="Currency" width="100" />
         </ColumnsDirective>
+
         <Inject
           services={[
             Resize,
