@@ -160,10 +160,6 @@ const ReceiptPage = () => {
             Add To Transaction
           </p>
         </div>
-        <BaseCurrency
-          baseCurrency={baseCurrency}
-          onBaseCurrencyChange={handleBaseCurrencyChange}
-        />
         {/* TransactionCreateForm */}
         <TransactionCreate
           baseCurrency={baseCurrency}
