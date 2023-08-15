@@ -6,9 +6,9 @@ import Input from './Input';
 import InputDropDown from './InputDropDown';
 import Button from './Button';
 
-const TransactionCreate = ({ baseCurrency }) => {
+const TransactionCreate = ({ baseCurrency, totalPriceFromOCR }) => {
   const [transaction_type, setTransactionType] = useState('');
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState('' || totalPriceFromOCR);
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [currency, setCurrency] = useState(baseCurrency);

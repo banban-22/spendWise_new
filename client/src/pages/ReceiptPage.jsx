@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Button from '../components/Button';
 
+import BaseCurrency from '../components/BaseCurrency';
+import TransactionCreate from '../components/TransactionCreate';
+
 const ENDPOINT = 'https://api.ocr.space/parse/image';
 const API_KEY = process.env.REACT_APP_RECEIPT_API_KEY;
 
@@ -13,6 +16,17 @@ const parseReceiptTable = (extractedText) => {
 const ReceiptPage = () => {
   const [result, setResult] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [baseCurrency, setBaseCurrency] = useState('');
+  let totalPrice = null;
+
+  // const escapeRegExpMatch = function (s) {
+  //   return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  // };
+
+  // const isExactMatch = (str, match) => {
+  //   const regex = new RegExp(`\\b${escapeRegExpMatch(match)}\\b`, 'i');
+  //   return regex.test(str);
+  // };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -52,7 +66,50 @@ const ReceiptPage = () => {
       alert('Error occurred while processing the receipt.');
     }
   };
-  console.log(result);
+  console.log('result', result);
+
+  const escapeRegExpMatch = function (s) {
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  };
+  const keywords = [
+    'total',
+    'total price',
+    'total amount',
+    'total:',
+    'debit card',
+    'credit card',
+    'cash',
+  ];
+
+  for (const line of result) {
+    const lineText = line.join(' ').toLowerCase();
+    console.log(lineText);
+    for (const keyword of keywords) {
+      const keywordIndex = lineText.search(
+        new RegExp(`\\b${escapeRegExpMatch(keyword)}\\b`)
+      );
+      if (keywordIndex !== -1) {
+        const numericValues = line
+          .slice(keywordIndex + keyword.split(' ').length)
+          .filter((text) => !isNaN(Number(text)));
+
+        if (numericValues.length > 0) {
+          totalPrice = Number(numericValues[0]);
+          break;
+        }
+      }
+    }
+
+    if (totalPrice !== null) {
+      break;
+    }
+  }
+
+  console.log('Total Price:', totalPrice);
+
+  const handleBaseCurrencyChange = (currency) => {
+    setBaseCurrency(currency);
+  };
 
   return (
     <div className="flex flex-col justify-center align-center">
@@ -96,6 +153,22 @@ const ReceiptPage = () => {
             <p className="capitalize">No data found</p>
           )}
         </div>
+      </div>
+      <div className="p-3">
+        <div className="sm:mt-10 md:mt-0 md:mb-4">
+          <p className="text-3xl font-extrabold tracking-tight text-secondary mt-10 md:mt-0">
+            Add To Transaction
+          </p>
+        </div>
+        <BaseCurrency
+          baseCurrency={baseCurrency}
+          onBaseCurrencyChange={handleBaseCurrencyChange}
+        />
+        {/* TransactionCreateForm */}
+        <TransactionCreate
+          baseCurrency={baseCurrency}
+          totalPriceFromOCR={totalPrice}
+        />
       </div>
     </div>
   );
