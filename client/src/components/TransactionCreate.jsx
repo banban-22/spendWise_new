@@ -14,6 +14,7 @@ const TransactionCreate = ({ baseCurrency, totalPriceFromOCR }) => {
   const [currency, setCurrency] = useState(baseCurrency);
   const [category_id, setCategoryId] = useState('');
   const [categories, setCategories] = useState([]);
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const TransactionCreate = ({ baseCurrency, totalPriceFromOCR }) => {
         setCategories(data);
       } catch (error) {
         console.error('Error fetching categories:', error);
+        setErrors(JSON.parse(error.message));
       }
     };
 
@@ -36,7 +38,7 @@ const TransactionCreate = ({ baseCurrency, totalPriceFromOCR }) => {
 
   const categoryOptions = categories.map((category) => ({
     value: category.id,
-    label: category.name,
+    label: `${category.id} - ${category.name}`,
   }));
 
   const handleInputChange = useCallback((event) => {
@@ -84,8 +86,8 @@ const TransactionCreate = ({ baseCurrency, totalPriceFromOCR }) => {
       }
     } catch (error) {
       console.error('Error creating transaction:', error);
+      setErrors(JSON.parse(error.message));
     } finally {
-      // Reset the form fields
       setTransactionType('');
       setAmount('');
       setDate('');
@@ -104,61 +106,81 @@ const TransactionCreate = ({ baseCurrency, totalPriceFromOCR }) => {
   ]);
 
   return (
-    <div className="flex flex-col lg:flex-row lg:items-end justify-center">
-      <InputDropDown
-        placeholder="Type"
-        name="transaction_type"
-        value={transaction_type}
-        options={[
-          { value: 'expenditure', label: 'Expenditure' },
-          { value: 'income', label: 'Income' },
-        ]}
-        onChange={handleInputChange}
-      />
-      <Input
-        type="number"
-        placeholder="Amount"
-        name="amount"
-        value={amount}
-        onChange={handleInputChange}
-      />
-      <Input
-        type="date"
-        placeholder="Date"
-        name="date"
-        value={date}
-        onChange={handleInputChange}
-      />
-      <Input
-        placeholder="Description"
-        name="description"
-        value={description}
-        onChange={handleInputChange}
-      />
-      <Input
-        placeholder="Currency"
-        name="currency"
-        value={currency || baseCurrency}
-        onChange={handleInputChange}
-      />
-      <InputDropDown
-        placeholder="Select a category"
-        name="category"
-        value={category_id}
-        options={categoryOptions}
-        onChange={handleInputChange}
-      />
-      <Button
-        bgColor="orange"
-        hoverBgColor="amber-200"
-        onClick={handleAddTransaction}
-        roundedSm={true}
-        btnPadding={8}
-        marginLeft={4}
-      >
-        Add Transaction
-      </Button>
-    </div>
+    <>
+      {errors?.messages?.transaction_type && (
+        <p className="error">Type {errors.messages.transaction_type[0]}</p>
+      )}
+      {errors?.messages?.amount && (
+        <p className="error">Amount {errors.messages.amount.join(', ')}</p>
+      )}
+      {errors?.messages?.date && (
+        <p className="error">Date {errors.messages.date.join(', ')}</p>
+      )}
+      {errors?.messages?.description && (
+        <p className="error">
+          Description {errors.messages.description.join(', ')}
+        </p>
+      )}
+      {errors?.messages?.category && (
+        <p className="error">Category {errors.messages.category.join(', ')}</p>
+      )}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-center">
+        <InputDropDown
+          placeholder="Type"
+          name="transaction_type"
+          value={transaction_type}
+          options={[
+            { value: 'expenditure', label: 'Expenditure' },
+            { value: 'income', label: 'Income' },
+          ]}
+          onChange={handleInputChange}
+        />
+
+        <Input
+          type="number"
+          placeholder="Amount"
+          name="amount"
+          value={amount}
+          onChange={handleInputChange}
+        />
+        <Input
+          type="date"
+          placeholder="Date"
+          name="date"
+          value={date}
+          onChange={handleInputChange}
+        />
+        <Input
+          placeholder="Description"
+          name="description"
+          value={description}
+          onChange={handleInputChange}
+        />
+        <Input
+          placeholder="Currency"
+          name="currency"
+          value={currency || baseCurrency}
+          onChange={handleInputChange}
+        />
+        <InputDropDown
+          placeholder="Select a category"
+          name="category"
+          value={category_id}
+          options={categoryOptions}
+          onChange={handleInputChange}
+        />
+        <Button
+          bgColor="orange"
+          hoverBgColor="amber-200"
+          onClick={handleAddTransaction}
+          roundedSm={true}
+          btnPadding={8}
+          marginLeft={4}
+        >
+          Add Transaction
+        </Button>
+      </div>
+    </>
   );
 };
 

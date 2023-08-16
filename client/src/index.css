@@ -23,3 +23,15 @@ body {
   opacity: 0.5;
   color: #000;
 }
+
+.signout {
+  background-color: rgb(209 213 219);
+}
+
+.error {
+  color: red;
+  background-color: #fcd3e7;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
