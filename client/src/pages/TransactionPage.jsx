@@ -4,6 +4,7 @@ import TransactionCreate from '../components/TransactionCreate';
 import TransactionGrid from '../components/TransactionGrid';
 import { Transaction, Category, User } from '../requests';
 import Loading from '../components/Loading';
+import { ImCross } from 'react-icons/im';
 
 const TransactionPage = () => {
   const [transactionData, setTransactionData] = useState([]);
@@ -12,6 +13,8 @@ const TransactionPage = () => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [alert, setAlert] = useState(null);
+  const [errors, setErrors] = useState(null);
 
   useEffect(() => {
     getCurrentUser();
@@ -76,8 +79,10 @@ const TransactionPage = () => {
       const response = await Transaction.update(updatedData.id, updatedData);
       console.log('updatedData', response);
       fetchTransactions();
+      setAlert(response.message);
     } catch (error) {
       console.error(error);
+      setErrors('Failed to update transaction');
     }
   };
 
@@ -86,8 +91,10 @@ const TransactionPage = () => {
       const response = await Transaction.destroy(deleteData.id);
       console.log('deleteData', response);
       fetchTransactions();
+      setAlert(response.message);
     } catch (error) {
       console.error(error);
+      setErrors('Failed to delete transaction');
     }
   };
 
@@ -103,8 +110,36 @@ const TransactionPage = () => {
     setBaseCurrency(currency);
   };
 
+  const handleClick = () => {
+    setAlert(null);
+    setErrors(null);
+  };
+
   return (
     <div className="p-3">
+      {alert && (
+        <div className="alert border px-4 py-3 rounded relative mb-5 flex items-center">
+          <span className="block sm:inline">{alert}</span>
+          <span
+            className="absolute top-0 bottom-0 right-0 px-4 py-4"
+            onClick={handleClick}
+          >
+            <ImCross />
+          </span>
+        </div>
+      )}
+
+      {errors && (
+        <div className="error border px-4 py-3 rounded relative mb-5 flex items-center">
+          <span className="block sm:inline">{errors}</span>
+          <span
+            className="absolute top-0 bottom-0 right-0 px-4 py-4"
+            onClick={handleClick}
+          >
+            <ImCross />
+          </span>
+        </div>
+      )}
       <div className="sm:mt-10 md:mt-0 md:mb-4">
         <p className="text-3xl font-extrabold tracking-tight text-secondary mt-10 md:mt-0">
           Transaction

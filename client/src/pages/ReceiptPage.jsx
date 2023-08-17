@@ -3,6 +3,8 @@ import Button from '../components/Button';
 
 import BaseCurrency from '../components/BaseCurrency';
 import TransactionCreate from '../components/TransactionCreate';
+import Loading from '../components/Loading';
+import { ImCross } from 'react-icons/im';
 
 const ENDPOINT = 'https://api.ocr.space/parse/image';
 const API_KEY = process.env.REACT_APP_RECEIPT_API_KEY;
@@ -17,16 +19,9 @@ const ReceiptPage = () => {
   const [result, setResult] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [baseCurrency, setBaseCurrency] = useState('');
+  const [errors, setErrors] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   let totalPrice = null;
-
-  // const escapeRegExpMatch = function (s) {
-  //   return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-  // };
-
-  // const isExactMatch = (str, match) => {
-  //   const regex = new RegExp(`\\b${escapeRegExpMatch(match)}\\b`, 'i');
-  //   return regex.test(str);
-  // };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -41,9 +36,11 @@ const ReceiptPage = () => {
       return;
     }
 
+    setIsLoading(true);
+
     try {
       const formData = new FormData();
-      formData.append('apikey', 'K89100680288957');
+      formData.append('apikey', API_KEY);
       formData.append('isTable', 'true');
       formData.append('image', selectedImage);
 
@@ -57,13 +54,16 @@ const ReceiptPage = () => {
         const extracted_text = ocr_result['ParsedResults'][0]['ParsedText'];
         const tableData = parseReceiptTable(extracted_text);
         setResult(tableData);
+        setErrors(null);
       } else {
         setResult([]);
-        alert('Error occurred while processing the receipt.');
+        setErrors('Error occurred while processing the receipt.');
       }
     } catch (error) {
       setResult([]);
-      alert('Error occurred while processing the receipt.');
+      setErrors('Error occurred while processing the receipt.');
+    } finally {
+      setIsLoading(false);
     }
   };
   console.log('result', result);
@@ -111,62 +111,83 @@ const ReceiptPage = () => {
     setBaseCurrency(currency);
   };
 
+  if (isLoading) {
+    return <Loading isLoading={isLoading} />;
+  }
+
+  const handleClick = () => {
+    setErrors(null);
+  };
+
   return (
-    <div className="flex flex-col justify-center align-center">
-      <p className="text-center">*Please put the image under 1024KB</p>
-      <div className="flex justify-center align-center">
-        <input
-          type="file"
-          alt="receipt_image"
-          className="bg-white p-2 rounded-lg mr-5"
-          onChange={handleFileChange}
-        />
-        <Button
-          bgColor="orange"
-          hoverBgColor="amber-200"
-          customWidth={'auto'}
-          onClick={handleOCR}
-          roundedSm={true}
-          btnPadding={8}
-        >
-          Submit
-        </Button>
-      </div>
-      <div className="flex flex-col justify-center align-center text-center mt-10">
-        <h2 className="text-xl">Result:</h2>
-        <div className="mx-auto">
-          {result.length > 0 ? (
-            <table className="border mt-8">
-              <tbody className="border">
-                {result.map((row, rowIndex) => (
-                  <tr key={rowIndex} className="border">
-                    {row.map((cell, cellIndex) => (
-                      <td key={cellIndex} className="border">
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <p className="capitalize">No data found</p>
-          )}
+    <>
+      <div className="flex flex-col justify-center align-center">
+        {errors && (
+          <div className="error border px-4 py-3 rounded relative mb-5 flex items-center">
+            <span className="block sm:inline">{errors}</span>
+            <span
+              className="absolute top-0 bottom-0 right-0 px-4 py-4"
+              onClick={handleClick}
+            >
+              <ImCross />
+            </span>
+          </div>
+        )}
+        <p className="text-center">*Please put the image under 1024KB</p>
+        <div className="flex justify-center align-center">
+          <input
+            type="file"
+            alt="receipt_image"
+            className="bg-white p-2 rounded-lg mr-5"
+            onChange={handleFileChange}
+          />
+          <Button
+            bgColor="orange"
+            hoverBgColor="amber-200"
+            customWidth={'auto'}
+            onClick={handleOCR}
+            roundedSm={true}
+            btnPadding={8}
+          >
+            Submit
+          </Button>
+        </div>
+        <div className="flex flex-col justify-center align-center text-center mt-10">
+          <h2 className="text-xl">Result:</h2>
+          <div className="mx-auto">
+            {result.length > 0 ? (
+              <table className="border mt-8">
+                <tbody className="border">
+                  {result.map((row, rowIndex) => (
+                    <tr key={rowIndex} className="border">
+                      {row.map((cell, cellIndex) => (
+                        <td key={cellIndex} className="border">
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p className="capitalize">No data found</p>
+            )}
+          </div>
+        </div>
+        <div className="p-3">
+          <div className="sm:mt-10 md:mt-0 md:mb-4">
+            <p className="text-3xl font-extrabold tracking-tight text-secondary mt-10 md:mt-0">
+              Add To Transaction
+            </p>
+          </div>
+          {/* TransactionCreateForm */}
+          <TransactionCreate
+            baseCurrency={baseCurrency}
+            totalPriceFromOCR={totalPrice}
+          />
         </div>
       </div>
-      <div className="p-3">
-        <div className="sm:mt-10 md:mt-0 md:mb-4">
-          <p className="text-3xl font-extrabold tracking-tight text-secondary mt-10 md:mt-0">
-            Add To Transaction
-          </p>
-        </div>
-        {/* TransactionCreateForm */}
-        <TransactionCreate
-          baseCurrency={baseCurrency}
-          totalPriceFromOCR={totalPrice}
-        />
-      </div>
-    </div>
+    </>
   );
 };
 

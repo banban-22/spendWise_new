@@ -35,3 +35,10 @@ body {
   border-radius: 0.5rem;
   margin: 1rem;
 }
+
+.alert {
+  background-color: #c1ffc1;
+  border-radius: 0.5rem;
+  border: 1px solid green;
+  color: green;
+}
