@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import Button from '../components/Button';
-
-import BaseCurrency from '../components/BaseCurrency';
 import TransactionCreate from '../components/TransactionCreate';
 import Loading from '../components/Loading';
-import { ImCross } from 'react-icons/im';
+import { Error } from '../components/Error';
 
 const ENDPOINT = 'https://api.ocr.space/parse/image';
 const API_KEY = process.env.REACT_APP_RECEIPT_API_KEY;
@@ -32,7 +30,7 @@ const ReceiptPage = () => {
     console.log(selectedImage);
     if (!selectedImage) {
       setResult([]);
-      alert('Please select an image first');
+      setErrors('Please select an image first');
       return;
     }
 
@@ -107,9 +105,9 @@ const ReceiptPage = () => {
 
   console.log('Total Price:', totalPrice);
 
-  const handleBaseCurrencyChange = (currency) => {
-    setBaseCurrency(currency);
-  };
+  // const handleBaseCurrencyChange = (currency) => {
+  //   setBaseCurrency(currency);
+  // };
 
   if (isLoading) {
     return <Loading isLoading={isLoading} />;
@@ -121,18 +119,8 @@ const ReceiptPage = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center align-center">
-        {errors && (
-          <div className="error border px-4 py-3 rounded relative mb-5 flex items-center">
-            <span className="block sm:inline">{errors}</span>
-            <span
-              className="absolute top-0 bottom-0 right-0 px-4 py-4"
-              onClick={handleClick}
-            >
-              <ImCross />
-            </span>
-          </div>
-        )}
+      <div className="flex flex-col justify-center align-center pt-20 md:pt-10">
+        {errors && <Error errors={errors} handleClick={handleClick} />}
         <p className="text-center">*Please put the image under 1024KB</p>
         <div className="flex justify-center align-center">
           <input

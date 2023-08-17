@@ -129,7 +129,7 @@ const ExpenseAmount = ({ selectedCategory }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2 sm:pt-16 md:pt-0">
         <div className="bg-white shadow overflow-hidden rounded-lg p-5 w-auto mx-3 mb-3 text-center">
           <p className="text-xl">Total Expense</p>
           <div className="text-3xl font-bold flex justify-center">

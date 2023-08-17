@@ -42,3 +42,8 @@ body {
   border: 1px solid green;
   color: green;
 }
+
+.alert-icon {
+  color: gray;
+  font-weight: 100;
+}
