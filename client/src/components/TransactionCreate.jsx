@@ -124,7 +124,7 @@ const TransactionCreate = ({ baseCurrency, totalPriceFromOCR }) => {
       {errors?.messages?.category && (
         <p className="error">Category {errors.messages.category.join(', ')}</p>
       )}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-center">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-around">
         <InputDropDown
           placeholder="Type"
           name="transaction_type"
@@ -175,9 +175,8 @@ const TransactionCreate = ({ baseCurrency, totalPriceFromOCR }) => {
           onClick={handleAddTransaction}
           roundedSm={true}
           btnPadding={8}
-          marginLeft={4}
         >
-          Add Transaction
+          Add
         </Button>
       </div>
     </>
