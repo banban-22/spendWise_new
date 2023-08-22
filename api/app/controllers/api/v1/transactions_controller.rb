@@ -34,9 +34,9 @@ class Api::V1::TransactionsController < Api::ApplicationController
 
     def destroy
         if @transaction.destroy
-            render json: { status: 200, message: "Transaction deleted" }, status: 200
+            render json: { status: 200, message: "Transaction successfully deleted" }, status: 200
         else
-            render json: { status: 422, messages: @transaction.errors.messages }, status: 422
+            render json: { status: :unprocessable_entity, messages: @transaction.errors.messages }, status: 422
         end
     end
 
