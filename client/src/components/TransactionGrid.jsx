@@ -57,6 +57,17 @@ const TransactionGrid = ({
     }
   };
 
+  const amountColorTemplate = (cellData) => {
+    console.log(cellData);
+    if (cellData && cellData.amount && cellData.amount !== null) {
+      const amount = cellData.amount;
+      const textColor =
+        cellData.transaction_type === 'income' ? 'green' : 'red';
+      return <span style={{ color: textColor }}>{amount}</span>;
+    }
+    return null;
+  };
+
   return (
     <div>
       <GridComponent
@@ -77,20 +88,14 @@ const TransactionGrid = ({
             field="transaction_type"
             headerText="Type"
             width="100"
-            // template={(cellData) => {
-            //   console.log(cellData);
-            //   if (cellData && cellData.amount && cellData.transaction_type) {
-            //     const transaction_type = cellData.transaction_type;
-            //     const textColor =
-            //       cellData.transaction_type === 'income' ? 'green' : 'red';
-            //     return (
-            //       <span style={{ color: textColor }}>{transaction_type}</span>
-            //     );
-            //   }
-            //   return null;
-            // }}
+            allowEditing={false}
           />
-          <ColumnDirective field="amount" headerText="Amount" width="100" />
+          <ColumnDirective
+            field="amount"
+            headerText="Amount"
+            width="100"
+            template={amountColorTemplate}
+          />
           <ColumnDirective
             field="description"
             headerText="Description"
