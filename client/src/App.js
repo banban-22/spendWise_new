@@ -71,7 +71,7 @@ function App() {
       >
         {isUserSignedIn() && (
           <div className="fixed md:static bg-primary-bg w-full">
-            <Navbar currentUser={user} />
+            <Navbar currentUser={user} onSignOut={signOut} />
           </div>
         )}
         <Routes>

@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useStateContext } from '../contexts/ContextProvider';
-
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { Session } from '../requests';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ currentUser }) => {
+const Navbar = ({ currentUser, onSignOut }) => {
   const {
-    activeMenu,
+    // activeMenu,
     setActiveMenu,
-    isClicked,
-    setIsClicked,
-    handleClick,
+    // isClicked,
+    // setIsClicked,
+    // handleClick,
     screenSize,
     setScreenSize,
   } = useStateContext();
+  const navigation = useNavigate();
 
   const handleClickSetting = () => {
     console.log('clicked');
+    Session.destroy().then(() => {
+      onSignOut();
+    });
+    navigation('/signin');
   };
 
   useEffect(() => {
@@ -45,21 +52,19 @@ const Navbar = ({ currentUser }) => {
         <AiOutlineMenu className="text-xl" />
       </button>
 
-      {/* {currentUser && (
-        <span className="text-4xl">Welcome {currentUser.first_name}</span>
-      )} */}
-
-      <div
-        className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-        onClick={handleClickSetting}
-      >
-        <p>
-          <span className="text-14 font-bold">
-            {' '}
-            Hi, {currentUser.first_name}
-          </span>
-        </p>
-      </div>
+      <TooltipComponent content="Sign Out" position="BottomCenter">
+        <div
+          className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
+          onClick={handleClickSetting}
+        >
+          <p>
+            <span className="text-lg font-bold">
+              {' '}
+              Hi, {currentUser.first_name}
+            </span>
+          </p>
+        </div>
+      </TooltipComponent>
     </div>
   );
 };

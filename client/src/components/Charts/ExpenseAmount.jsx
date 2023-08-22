@@ -17,7 +17,7 @@ import { TbPigMoney } from 'react-icons/tb';
 const ExpenseAmount = ({ selectedCategory }) => {
   const [transactionData, setTransactionData] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [errors, setErrors] = useState(null);
+  // const [errors, setErrors] = useState(null);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);

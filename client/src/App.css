@@ -54,3 +54,18 @@
 .e-input-group.e-control-wrapper.e-error:not(.e-float-icon-left) {
   border: none;
 }
+
+.e-tooltip-wrap {
+  border-radius: 4px;
+  opacity: 1;
+}
+
+.e-tooltip-wrap .e-tip-content {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.e-tooltip-wrap .e-arrow-tip.e-tip-top {
+  height: 0;
+  margin: 0;
+}
