@@ -58,12 +58,25 @@ const TransactionGrid = ({
   };
 
   const amountColorTemplate = (cellData) => {
-    console.log(cellData);
     if (cellData && cellData.amount && cellData.amount !== null) {
       const amount = cellData.amount;
       const textColor =
         cellData.transaction_type === 'income' ? 'green' : 'red';
       return <span style={{ color: textColor }}>{amount}</span>;
+    }
+    return null;
+  };
+
+  const categoryDropDownTemplate = (cellData) => {
+    if (cellData && cellData.category_id && cellData.category_id !== null) {
+      const category = categories.find(
+        (category) => category.id === cellData.category_id
+      );
+      return (
+        <span>
+          {category.id} - {category.name}
+        </span>
+      );
     }
     return null;
   };
@@ -103,10 +116,17 @@ const TransactionGrid = ({
           />
           <ColumnDirective field="date" headerText="Date" width="100" />
           <ColumnDirective
+            field="category_id"
+            headerText="Category"
+            width="100"
+            template={categoryDropDownTemplate}
+          />
+          <ColumnDirective
             field="category"
             headerText="Category"
             width="100"
             allowEditing={false}
+            visible={false}
           />
           <ColumnDirective
             field="currency"
