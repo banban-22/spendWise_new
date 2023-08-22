@@ -124,7 +124,7 @@ const TransactionCreate = ({ baseCurrency, totalPriceFromOCR }) => {
       {errors?.messages?.category && (
         <p className="error">Category {errors.messages.category.join(', ')}</p>
       )}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-around">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between">
         <InputDropDown
           placeholder="Type"
           name="transaction_type"
