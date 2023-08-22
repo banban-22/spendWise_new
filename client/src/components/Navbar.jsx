@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useStateContext } from '../contexts/ContextProvider';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { AiOutlineMenu } from 'react-icons/ai';
@@ -6,15 +6,7 @@ import { Session } from '../requests';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ currentUser, onSignOut }) => {
-  const {
-    // activeMenu,
-    setActiveMenu,
-    // isClicked,
-    // setIsClicked,
-    // handleClick,
-    screenSize,
-    setScreenSize,
-  } = useStateContext();
+  const { setActiveMenu, screenSize, setScreenSize } = useStateContext();
   const navigation = useNavigate();
 
   const handleClickSetting = () => {
@@ -59,7 +51,6 @@ const Navbar = ({ currentUser, onSignOut }) => {
         >
           <p>
             <span className="text-lg font-bold">
-              {' '}
               Hi, {currentUser.first_name}
             </span>
           </p>
