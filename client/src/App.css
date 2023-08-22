@@ -69,3 +69,7 @@
   height: 0;
   margin: 0;
 }
+
+.e-grid .e-gridpager .e-currentitem {
+  background-color: #f8a927;
+}
