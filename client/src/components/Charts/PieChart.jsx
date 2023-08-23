@@ -168,7 +168,7 @@ const PieChart = () => {
             No Data Available
           </p>
 
-          <AccumulationChartComponent mponent id="pie-charts">
+          <AccumulationChartComponent id="pie-charts">
             <Inject services={[PieSeries]} />
             <AccumulationSeriesCollectionDirective>
               <AccumulationSeriesDirective
