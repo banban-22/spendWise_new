@@ -234,3 +234,13 @@ We recognize the importance of effective expense tracking and financial manageme
 In summary, our financial app's information architecture will be organized primarily based on audience segments and core functionalities. This structure aims to provide users with a streamlined experience that caters to their individual needs while ensuring efficient financial management and analysis.
 
 ## Skeleton
+
+### 16. Wireframe
+
+a.
+
+b.
+
+c.
+
+d.
