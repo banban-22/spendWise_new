@@ -51,9 +51,9 @@ Furthermore, as an international student, incorporating a currency conversion fe
 - How can the product compare to others the user has used before?
   - They can compare this app in terms of the ease of use. How much they are easily keep recording. Also, they can compare to others in terms of the accuracy, which means how much accurate the currency conversion rate is.
 
-### Goals
+### 5. Goals
 
-5. The goal of this app is to create an application that caters to the needs of international users who wish to easily maintain their financial records.
+- The goal of this app is to create an application that caters to the needs of international users who wish to easily maintain their financial records.
 
 ### 6. List of features/opportunities
 
@@ -205,4 +205,4 @@ Value to User: The app provides Emily with a practical and educational tool to d
 
 Value to Business: This scenario highlights the app's appeal to young adults and students seeking to build strong financial habits. By providing value and guidance, the app can foster a user base of financially responsible individuals.
 
-12. Communication of each scenarios
+### 12. Communication of each scenarios
