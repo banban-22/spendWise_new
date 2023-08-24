@@ -239,6 +239,8 @@ In summary, our financial app's information architecture will be organized prima
 
 a.
 
+![Wireframe_draft](Wireframe_draft.png)
+
 b.
 
 c.
