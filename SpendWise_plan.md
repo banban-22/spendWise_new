@@ -180,7 +180,7 @@ Value to Business: The multi-currency support feature attracts users like Sarah 
 
 User Flow:
 
-1. Alex logs into the app and accesses his business account.
+1. Alex logs into the app and accesses his account.
 2. He enters his business income using the "Income Tracking" feature, recording the amounts earned from sales and services.
 3. Alex also records his business expenses using the "Expense Tracking" feature, categorizing them into categories such as supplies, utilities, and marketing.
 4. Alex generates financial reports using the "Financial Reports and Analytics" feature, which provides him with insights into income vs. expenses, spending trends, and net worth.
@@ -195,14 +195,20 @@ Value to Business: The financial reports and analytics feature caters to busines
 User Flow:
 
 1. Emily signs up for an account.
-2. She begins her budgeting journey by setting up her budget categories using the "Budgeting" feature. She allocates amounts for essentials like groceries, transportation, and textbooks.
+2. She begins her budgeting journey. She allocates amounts for essentials like groceries, transportation, and textbooks.
 3. Using the "Expense Tracking" feature, Emily records her daily expenses as she goes about her college life. She categorizes each expense and adds tags for better organization.
-4. The app notifies Emily when she's nearing her budget limits for specific categories, helping her make mindful spending choices.
-5. As Emily records her expenses over the semester, she generates periodic financial reports using the "Financial Reports and Analytics" feature.
-6. Emily uses the insights from these reports to identify spending patterns, adjust her budget as needed, and plan for future expenses.
+4. As Emily records her expenses over the semester, she generates periodic financial reports using the "Financial Reports and Analytics" feature.
+5. Emily uses the insights from these reports to identify spending patterns, adjust her budget as needed, and plan for future expenses.
 
 Value to User: The app provides Emily with a practical and educational tool to develop budgeting skills. It helps her track expenses, manage her budget, and make informed financial decisions during her college years.
 
 Value to Business: This scenario highlights the app's appeal to young adults and students seeking to build strong financial habits. By providing value and guidance, the app can foster a user base of financially responsible individuals.
 
 ### 12. Communication of each scenarios
+
+**Scenario 1: International Traveler's Expense Tracking**
+![scenario1_flow_chart](scenario1_flow_chart.png)
+**Scenario 2: Business Owner's Financial Insights**
+![scenario2_flow_chart](scenario2_flow_chart.png)
+**Scenario 3: College Student's Budgeting Journey**
+![scenario3_flow_chart](scenario3_flow_chart.png)
