@@ -244,13 +244,21 @@ b.
 c.
 
 d.
-![Wireframe_fixed-1](Wireframe_fixed-1.png)
-![Wireframe_fixed-2](Wireframe_fixed-2.png)
-![Wireframe_fixed-3](Wireframe_fixed-3.png)
-![Wireframe_fixed-4](Wireframe_fixed-4.png)
-![Wireframe_fixed-5](Wireframe_fixed-5.png)
-![Wireframe_fixed-6](Wireframe_fixed-6.png)
-![Wireframe_fixed-7](Wireframe_fixed-7.png)
+
+- Welcome Page
+  ![Wireframe_fixed-1](Wireframe_fixed-1.png)
+- Sign UP Page
+  ![Wireframe_fixed-2](Wireframe_fixed-2.png)
+- Login Page
+  ![Wireframe_fixed-3](Wireframe_fixed-3.png)
+- Homepage (dashboard)
+  ![Wireframe_fixed-4](Wireframe_fixed-4.png)
+- Transaction Page
+  ![Wireframe_fixed-5](Wireframe_fixed-5.png)
+- Receipt Page
+  ![Wireframe_fixed-6](Wireframe_fixed-6.png)
+- Currency Rate Page
+  ![Wireframe_fixed-7](Wireframe_fixed-7.png)
 
 ## Surface/UI
 
