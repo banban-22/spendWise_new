@@ -14,11 +14,11 @@ Furthermore, as an international student, incorporating a currency conversion fe
 
 ## Strategy
 
-### Target
+### 3. Target
 
-3. People who comes from other countries (Business to Customers)
+- People who comes from other countries (Business to Customers)
 
-4. Questions for users
+### 4. Questions for users
 
 - What makes a good experience (shopping, watching, searching, etc)?
 
@@ -55,7 +55,7 @@ Furthermore, as an international student, incorporating a currency conversion fe
 
 5. The goal of this app is to create an application that caters to the needs of international users who wish to easily maintain their financial records.
 
-6. List of features/opportunities
+### 6. List of features/opportunities
 
 - Authentication and User Management
   - Implement a user authentication system to allow users to sign up, log in, and manage their accounts. This will enable users to have personalized expense tracking and secure access to their data.
@@ -84,14 +84,14 @@ Furthermore, as an international student, incorporating a currency conversion fe
 - Dark and Light Mode
   - Implement light mode and dark mode (User can change easily by click)
 
-7. Budget
+### 7. Budget
 
 - time to research - 2/12
 - time to work - 4/12
 - time for debugging - 4/12
 - time for finishing touches - 2/12
 
-8. Opportunitties/features
+### 8. Opportunitties/features
 
 - Importance
   - Transaction Data CRUD - (Rate: 5)
@@ -106,7 +106,7 @@ Furthermore, as an international student, incorporating a currency conversion fe
   - Currency Rate Conversion - (Rate: 5)
   - Multi Platform Access - (Rate: 5)
 
-9. Releases
+### 9. Releases
 
 **Release 1: Building the Foundation**
 
@@ -147,7 +147,7 @@ Total points as per available resources: 12
 
 ## Scope
 
-10. Scenarios
+### 10. Scenarios
 
 **Scenario 1: International Traveler's Expense Tracking**
 
@@ -161,7 +161,7 @@ Description: Alex is a small business owner who wants to gain a comprehensive ov
 
 Description: Emily is a college student who wants to take control of her finances and learn how to budget effectively. She's searching for a user-friendly app that can guide her through the process.
 
-11. Developing the above scenarios
+### 11. Developing the above scenarios
 
 **Scenario 1: International Traveler's Expense Tracking**
 User Flow:
