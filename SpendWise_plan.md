@@ -204,7 +204,7 @@ Value to User: The app provides Emily with a practical and educational tool to d
 
 Value to Business: This scenario highlights the app's appeal to young adults and students seeking to build strong financial habits. By providing value and guidance, the app can foster a user base of financially responsible individuals.
 
-### 12. Communication of each scenarios
+### 12&13. Communication of each scenarios
 
 **Scenario 1: International Traveler's Expense Tracking**
 ![scenario1_flow_chart](scenario1_flow_chart.png)
@@ -212,3 +212,25 @@ Value to Business: This scenario highlights the app's appeal to young adults and
 ![scenario2_flow_chart](scenario2_flow_chart.png)
 **Scenario 3: College Student's Budgeting Journey**
 ![scenario3_flow_chart](scenario3_flow_chart.png)
+
+## Structure
+
+### 14.
+
+- Type: Hierarchical
+- Diagram:
+  ![information_architecture_structure](information_architecture_structure.png)
+
+### 15.
+
+For our financial app, we will use a combination of organizing principles to ensure a user-friendly and efficient experience. These principles will revolve around the app's core functionalities and user needs. The primary organizing principles we will employ are "Audience" and "Functionality."
+
+**Audience-Based Organization:**
+Considering the diverse user base of our financial app, we will employ audience-based organization to cater to different user segments. Our user authentication and management system will play a crucial role in this aspect. Users will sign up and log in to their personalized accounts, allowing them to access their individualized financial data securely. This approach will enable us to offer tailored experiences to various user groups, such as individual consumers, business owners, and students.
+
+**Functionality-Based Organization:**
+We recognize the importance of effective expense tracking and financial management. Our app's core features, including expense tracking, income tracking, and multi-currency support, will be organized based on their functionality. Users will seamlessly input and categorize expenses, record income sources, and utilize the automatic currency exchange feature. This functional organization ensures that users can easily find and utilize the tools they need to manage their financial activities efficiently.
+
+In summary, our financial app's information architecture will be organized primarily based on audience segments and core functionalities. This structure aims to provide users with a streamlined experience that caters to their individual needs while ensuring efficient financial management and analysis.
+
+## Skeleton
