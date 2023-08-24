@@ -87,17 +87,17 @@ Furthermore, as an international student, incorporating a currency conversion fe
 8. Opportunitties/features
 
 - Importance
-  ⋅⋅\*Transaction Data CRUD - (Rate: 5)
-  ⋅⋅\*Sign In/ Out - (Rate: 5)
-  ⋅⋅\*Dashboard (Show summary of transaction) - (Rate: 5)
-  ⋅⋅\*Currency Rate Conversion - (Rate: 4)
-  ⋅⋅\*Multi Platform Access - (Rate: 4)
+  ⋅⋅⋅\*Transaction Data CRUD - (Rate: 5)
+  ⋅⋅⋅\*Sign In/ Out - (Rate: 5)
+  ⋅⋅⋅\*Dashboard (Show summary of transaction) - (Rate: 5)
+  ⋅⋅⋅\*Currency Rate Conversion - (Rate: 4)
+  ⋅⋅⋅\*Multi Platform Access - (Rate: 4)
 - Feasibility
-  ⋅⋅\*Transaction Data CRUD - (Rate: 5)
-  ⋅⋅\*Sign In/ Out - (Rate: 5)
-  ⋅⋅\*Dashboard (Show summary of transaction) - (Rate: 5)
-  ⋅⋅\*Currency Rate Conversion - (Rate: 5)
-  ⋅⋅\*Multi Platform Access - (Rate: 5)
+  ⋅⋅⋅\*Transaction Data CRUD - (Rate: 5)
+  ⋅⋅⋅\*Sign In/ Out - (Rate: 5)
+  ⋅⋅⋅\*Dashboard (Show summary of transaction) - (Rate: 5)
+  ⋅⋅⋅\*Currency Rate Conversion - (Rate: 5)
+  ⋅⋅⋅\*Multi Platform Access - (Rate: 5)
 
 9. Releases
 
