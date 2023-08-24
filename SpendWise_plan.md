@@ -87,17 +87,17 @@ Furthermore, as an international student, incorporating a currency conversion fe
 8. Opportunitties/features
 
 - Importance
-  ⋅⋅\*. Transaction Data CRUD - (Rate: 5)
-  ⋅⋅\*. Sign In/ Out - (Rate: 5)
-  ⋅⋅\*. Dashboard (Show summary of transaction) - (Rate: 5)
-  ⋅⋅\*. Currency Rate Conversion - (Rate: 4)
-  ⋅⋅\*. Multi Platform Access - (Rate: 4)
+  ⋅⋅\*Transaction Data CRUD - (Rate: 5)
+  ⋅⋅\*Sign In/ Out - (Rate: 5)
+  ⋅⋅\*Dashboard (Show summary of transaction) - (Rate: 5)
+  ⋅⋅\*Currency Rate Conversion - (Rate: 4)
+  ⋅⋅\*Multi Platform Access - (Rate: 4)
 - Feasibility
-  ⋅⋅\*. Transaction Data CRUD - (Rate: 5)
-  ⋅⋅\*. Sign In/ Out - (Rate: 5)
-  ⋅⋅\*. Dashboard (Show summary of transaction) - (Rate: 5)
-  ⋅⋅\*. Currency Rate Conversion - (Rate: 5)
-  ⋅⋅\*. Multi Platform Access - (Rate: 5)
+  ⋅⋅\*Transaction Data CRUD - (Rate: 5)
+  ⋅⋅\*Sign In/ Out - (Rate: 5)
+  ⋅⋅\*Dashboard (Show summary of transaction) - (Rate: 5)
+  ⋅⋅\*Currency Rate Conversion - (Rate: 5)
+  ⋅⋅\*Multi Platform Access - (Rate: 5)
 
 9. Releases
 
@@ -107,8 +107,8 @@ Furthermore, as an international student, incorporating a currency conversion fe
 - User Value - Users will experience a streamlined interface for data input and basic categorization, simplifying their financial record-keeping process.
 - Business Value - This release sets the foundation for the app, allowing for user testing and feedback to improve future releases. It introduces the app to the market.
 - Features/Functions -
-  ⋅⋅\*. User-friendly data entry
-  ⋅⋅\*. Basic expense categorization
+  ⋅⋅\*User-friendly data entry
+  ⋅⋅\*Basic expense categorization
 
 Points for this release: 2
 
@@ -118,9 +118,9 @@ Points for this release: 2
 - User Value - Users will benefit from automated features like receipt scanning and categorized expense summaries, making record-keeping even more efficient.
 - Business Value - This release enhances user satisfaction and attracts more users due to increased functionality.
 - Features/Functions -
-  ⋅⋅\*. Receipt scanning and attachment
-  ⋅⋅\*. Automated expense categorization
-  ⋅⋅\*. Summary of categorized expenses
+  ⋅⋅\*Receipt scanning and attachment
+  ⋅⋅\*Automated expense categorization
+  ⋅⋅\*Summary of categorized expenses
 
 Points for this release: 4
 
@@ -130,9 +130,9 @@ Points for this release: 4
 - User Value - Users gain access to visual reports showcasing spending patterns and budget adherence, enabling better financial decision-making.
 - Business Value - The app differentiates itself by offering advanced insights, increasing user loyalty and potentially attracting premium subscribers.
 - Features/Functions -
-  ⋅⋅\*. Visual spending reports
-  ⋅⋅\*. Budget tracking and alerts
-  ⋅⋅\*. Enhanced data visualization
+  ⋅⋅\*Visual spending reports
+  ⋅⋅\*Budget tracking and alerts
+  ⋅⋅\*Enhanced data visualization
 
 Points for this release: 6
 
