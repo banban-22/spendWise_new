@@ -244,3 +244,47 @@ b.
 c.
 
 d.
+![Wireframe_fixed-1](Wireframe_fixed-1.png)
+![Wireframe_fixed-2](Wireframe_fixed-2.png)
+![Wireframe_fixed-3](Wireframe_fixed-3.png)
+![Wireframe_fixed-4](Wireframe_fixed-4.png)
+![Wireframe_fixed-5](Wireframe_fixed-5.png)
+![Wireframe_fixed-6](Wireframe_fixed-6.png)
+![Wireframe_fixed-7](Wireframe_fixed-7.png)
+
+## Surface/UI
+
+### 17.
+
+In alignment with the goals and objectives outlined in our "business" plan, we have carefully selected design elements that resonate with our vision and enhance the user experience.
+
+**Color Scheme: Orange**
+Our chosen color scheme of orange reflects our commitment to energy, enthusiasm, and vibrancy. Orange is a color that resonates with optimism and innovation, which perfectly aligns with our financial app's aim to empower users in their financial management journey. The warm and inviting nature of orange also instills a sense of trust and approachability, inviting users to engage with our app with confidence.
+
+**Fonts: Montserrat (Sans-Serif)**
+We have opted for the Montserrat font, a sleek and contemporary sans-serif typeface. This font choice complements our goal of creating an app that is modern, easy to read, and user-friendly. Montserrat's clean lines and versatile weights ensure that our app's content is presented legibly across different devices, maintaining a consistent and professional appearance.
+
+**Design Decisions: Easiness of Use**
+Central to our design philosophy is the principle of easiness of use. We have made conscious design decisions that prioritize intuitive navigation, clear visual hierarchy, and minimal clutter. Our user interface is designed to guide users seamlessly through the app's features, ensuring that even individuals with varying levels of financial knowledge can navigate and interact comfortably.
+
+The combination of the energetic orange color scheme, the readability and modernity of the Montserrat font, and the overarching focus on ease of use collectively contribute to an app design that resonates with our goals and objectives. Our design elements not only reflect our brand identity but also enhance the overall user experience, fostering trust and engagement among our users.
+
+### 18.
+
+Think of exercises done in the UI/UX classes and come up with ideas to design your project for the most successful User Experience.
+
+## ERD
+
+### 19.
+
+- Database plan:
+  - Creating three tables: Categories, Users, Transactions
+  - Transactions table is referenced by Categories and Users table
+  - Users table is referenced by Categories table
+  - Users table has first_name, last_name, email, and password_digest
+  - Categories table has some default category names
+  - Transaction table has amount, date, description, currency, and transaction_type(income or expense)
+
+### 20 & 21 & 22.
+
+![ERD](ERD.png)
