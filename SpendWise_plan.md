@@ -291,7 +291,8 @@ The combination of the energetic orange color scheme, the readability and modern
 
 ### 18.
 
-Think of exercises done in the UI/UX classes and come up with ideas to design your project for the most successful User Experience.
+https://www.figma.com/file/XNMe9P11SX6Ild6CR82MEd/Mock?type=design&node-id=0%3A1&mode=design&t=s590mFmuZ1P9KADr-1
+![Mock_design](Mock_design.png)
 
 ## ERD
 
