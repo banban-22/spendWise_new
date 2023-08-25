@@ -291,8 +291,11 @@ The combination of the energetic orange color scheme, the readability and modern
 
 ### 18.
 
-https://www.figma.com/file/XNMe9P11SX6Ild6CR82MEd/Mock?type=design&node-id=6%3A427&mode=design&t=KKtwL13FAm3LiDHA-1
-![Mock_design](image/Mock_design.png)
+- Prototype
+  https://www.figma.com/file/XNMe9P11SX6Ild6CR82MEd/Mock?type=design&node-id=6%3A427&mode=design&t=KKtwL13FAm3LiDHA-1
+
+- Image
+  ![Mock_design](image/Mock_design.png)
 
 ## ERD
 
