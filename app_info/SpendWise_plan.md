@@ -207,11 +207,11 @@ Value to Business: This scenario highlights the app's appeal to young adults and
 ### 12&13. Communication of each scenarios
 
 **Scenario 1: International Traveler's Expense Tracking**
-![scenario1_flow_chart](scenario1_flow_chart.png)
+![scenario1_flow_chart](image/scenario1_flow_chart.png)
 **Scenario 2: Business Owner's Financial Insights**
-![scenario2_flow_chart](scenario2_flow_chart.png)
+![scenario2_flow_chart](image/scenario2_flow_chart.png)
 **Scenario 3: College Student's Budgeting Journey**
-![scenario3_flow_chart](scenario3_flow_chart.png)
+![scenario3_flow_chart](image/scenario3_flow_chart.png)
 
 ## Structure
 
@@ -219,7 +219,7 @@ Value to Business: This scenario highlights the app's appeal to young adults and
 
 - Type: Hierarchical
 - Diagram:
-  ![information_architecture_structure](information_architecture_structure.png)
+  ![information_architecture_structure](image/information_architecture_structure.png)
 
 ### 15.
 
@@ -239,7 +239,7 @@ In summary, my financial app's information architecture will be organized primar
 
 a.
 
-![Wireframe_draft](Wireframe_draft.png)
+![Wireframe_draft](image/Wireframe_draft.png)
 
 b.
 
@@ -258,19 +258,19 @@ b.
 c & d.
 
 - Welcome Page
-  ![Wireframe_fixed-1](Wireframe_fixed-1.png)
+  ![Wireframe_fixed-1](image/Wireframe_fixed-1.png)
 - Sign UP Page
-  ![Wireframe_fixed-2](Wireframe_fixed-2.png)
+  ![Wireframe_fixed-2](image/Wireframe_fixed-2.png)
 - Login Page
-  ![Wireframe_fixed-3](Wireframe_fixed-3.png)
+  ![Wireframe_fixed-3](image/Wireframe_fixed-3.png)
 - Homepage (dashboard)
-  ![Wireframe_fixed-4](Wireframe_fixed-4.png)
+  ![Wireframe_fixed-4](image/Wireframe_fixed-4.png)
 - Transaction Page
-  ![Wireframe_fixed-5](Wireframe_fixed-5.png)
+  ![Wireframe_fixed-5](image/Wireframe_fixed-5.png)
 - Receipt Page
-  ![Wireframe_fixed-6](Wireframe_fixed-6.png)
+  ![Wireframe_fixed-6](image/Wireframe_fixed-6.png)
 - Currency Rate Page
-  ![Wireframe_fixed-7](Wireframe_fixed-7.png)
+  ![Wireframe_fixed-7](image/Wireframe_fixed-7.png)
 
 ## Surface/UI
 
@@ -292,7 +292,7 @@ The combination of the energetic orange color scheme, the readability and modern
 ### 18.
 
 https://www.figma.com/file/XNMe9P11SX6Ild6CR82MEd/Mock?type=design&node-id=6%3A427&mode=design&t=KKtwL13FAm3LiDHA-1
-![Mock_design](Mock_design.png)
+![Mock_design](image/Mock_design.png)
 
 ## ERD
 
@@ -308,4 +308,4 @@ https://www.figma.com/file/XNMe9P11SX6Ild6CR82MEd/Mock?type=design&node-id=6%3A4
 
 ### 20 & 21 & 22.
 
-![ERD](ERD.png)
+![ERD](image/ERD.png)
