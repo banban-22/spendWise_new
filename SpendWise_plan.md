@@ -243,9 +243,19 @@ a.
 
 b.
 
-c.
+- Is anything important missing?
+  - The forms for Sign Up and Login pages are not clear - need to clearly describe what information is needed
+  - Not clear what information is described on dashboard page
+  - No Receipt scanning page
+- Is the most important content noticed first?
+  - Not really. Hard to find what the most important content through the draft. However, the transaction page, which might be one of the most important pages, is described clearly.
+- Is there anything that shouldn’t be here? Which content is related and how?
+  - In terms of the wireframe, the information of database table is not necessary. You can remove it.
+- Can you get to all of the major areas from here?
 
-d.
+  - No. This draft is missing receipt scanning page, and it's necessary to be added since the client is not able to how to look the receipt scanning page.
+
+c & d.
 
 - Welcome Page
   ![Wireframe_fixed-1](Wireframe_fixed-1.png)
