@@ -223,15 +223,15 @@ Value to Business: This scenario highlights the app's appeal to young adults and
 
 ### 15.
 
-For our financial app, we will use a combination of organizing principles to ensure a user-friendly and efficient experience. These principles will revolve around the app's core functionalities and user needs. The primary organizing principles we will employ are "Audience" and "Functionality."
+For the financial app, we will use a combination of organizing principles to ensure a user-friendly and efficient experience. These principles will revolve around the app's core functionalities and user needs. The primary organizing principles we will employ are "Audience" and "Functionality."
 
 **Audience-Based Organization:**
-Considering the diverse user base of our financial app, we will employ audience-based organization to cater to different user segments. Our user authentication and management system will play a crucial role in this aspect. Users will sign up and log in to their personalized accounts, allowing them to access their individualized financial data securely. This approach will enable us to offer tailored experiences to various user groups, such as individual consumers, business owners, and students.
+Considering the diverse user base of my financial app, we will employ audience-based organization to cater to different user segments. My user authentication and management system will play a crucial role in this aspect. Users will sign up and log in to their personalized accounts, allowing them to access their individualized financial data securely. This approach will enable us to offer tailored experiences to various user groups, such as individual consumers, business owners, and students.
 
 **Functionality-Based Organization:**
-We recognize the importance of effective expense tracking and financial management. Our app's core features, including expense tracking, income tracking, and multi-currency support, will be organized based on their functionality. Users will seamlessly input and categorize expenses, record income sources, and utilize the automatic currency exchange feature. This functional organization ensures that users can easily find and utilize the tools they need to manage their financial activities efficiently.
+We recognize the importance of effective expense tracking and financial management. My app's core features, including expense tracking, income tracking, and multi-currency support, will be organized based on their functionality. Users will seamlessly input and categorize expenses, record income sources, and utilize the automatic currency exchange feature. This functional organization ensures that users can easily find and utilize the tools they need to manage their financial activities efficiently.
 
-In summary, our financial app's information architecture will be organized primarily based on audience segments and core functionalities. This structure aims to provide users with a streamlined experience that caters to their individual needs while ensuring efficient financial management and analysis.
+In summary, my financial app's information architecture will be organized primarily based on audience segments and core functionalities. This structure aims to provide users with a streamlined experience that caters to their individual needs while ensuring efficient financial management and analysis.
 
 ## Skeleton
 
@@ -276,18 +276,18 @@ c & d.
 
 ### 17.
 
-In alignment with the goals and objectives outlined in our "business" plan, we have carefully selected design elements that resonate with our vision and enhance the user experience.
+In alignment with the goals and objectives outlined in my "business" plan, we have carefully selected design elements that resonate with my vision and enhance the user experience.
 
 **Color Scheme: Orange**
-Our chosen color scheme of orange reflects our commitment to energy, enthusiasm, and vibrancy. Orange is a color that resonates with optimism and innovation, which perfectly aligns with our financial app's aim to empower users in their financial management journey. The warm and inviting nature of orange also instills a sense of trust and approachability, inviting users to engage with our app with confidence.
+My chosen color scheme of orange reflects my commitment to energy, enthusiasm, and vibrancy. Orange is a color that resonates with optimism and innovation, which perfectly aligns with my financial app's aim to empower users in their financial management journey. The warm and inviting nature of orange also instills a sense of trust and approachability, inviting users to engage with my app with confidence.
 
 **Fonts: Montserrat (Sans-Serif)**
-We have opted for the Montserrat font, a sleek and contemporary sans-serif typeface. This font choice complements our goal of creating an app that is modern, easy to read, and user-friendly. Montserrat's clean lines and versatile weights ensure that our app's content is presented legibly across different devices, maintaining a consistent and professional appearance.
+We have opted for the Montserrat font, a sleek and contemporary sans-serif typeface. This font choice complements my goal of creating an app that is modern, easy to read, and user-friendly. Montserrat's clean lines and versatile weights ensure that my app's content is presented legibly across different devices, maintaining a consistent and professional appearance.
 
 **Design Decisions: Easiness of Use**
-Central to our design philosophy is the principle of easiness of use. We have made conscious design decisions that prioritize intuitive navigation, clear visual hierarchy, and minimal clutter. Our user interface is designed to guide users seamlessly through the app's features, ensuring that even individuals with varying levels of financial knowledge can navigate and interact comfortably.
+Central to my design philosophy is the principle of easiness of use. We have made conscious design decisions that prioritize intuitive navigation, clear visual hierarchy, and minimal clutter. My user interface is designed to guide users seamlessly through the app's features, ensuring that even individuals with varying levels of financial knowledge can navigate and interact comfortably.
 
-The combination of the energetic orange color scheme, the readability and modernity of the Montserrat font, and the overarching focus on ease of use collectively contribute to an app design that resonates with our goals and objectives. Our design elements not only reflect our brand identity but also enhance the overall user experience, fostering trust and engagement among our users.
+The combination of the energetic orange color scheme, the readability and modernity of the Montserrat font, and the overarching focus on ease of use collectively contribute to an app design that resonates with my goals and objectives. My design elements not only reflect my brand identity but also enhance the overall user experience, fostering trust and engagement among my users.
 
 ### 18.
 
