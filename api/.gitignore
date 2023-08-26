@@ -66,8 +66,8 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
-/public/uploads
 
 # Ignore credentials for rails application
 /**/config/initializers/app_key.rb
 /**/config/secrets.yml
+
