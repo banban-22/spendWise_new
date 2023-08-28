@@ -324,7 +324,7 @@ const CurrencyConverter = () => {
             />
             <button
               onClick={handleManualConversion}
-              className="manual-input mt-8 ml-3 bg-white px-3 rounded shadow-md border-black"
+              className="manual-input mt-8 ml-3 bg-white px-3 rounded-lg shadow-md border-black"
             >
               Convert
             </button>
