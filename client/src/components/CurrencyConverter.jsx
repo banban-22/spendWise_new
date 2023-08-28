@@ -208,7 +208,8 @@ const CurrencyConverter = () => {
 
   useEffect(() => {
     if (!manualMode && !apiNotWorking) {
-      const API_KEY = process.env.REACT_APP_CURRENCY_API_KEY;
+      // const API_KEY = process.env.REACT_APP_CURRENCY_API_KEY;
+      const API_KEY = '7615924fb348fb790fb9ffc9';
       const BASE_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${fromCurrency}/${toCurrency}`;
 
       fetch(BASE_URL)
