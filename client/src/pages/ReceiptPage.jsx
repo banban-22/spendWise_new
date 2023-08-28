@@ -5,7 +5,8 @@ import Loading from '../components/Loading';
 import { Error } from '../components/Error';
 
 const ENDPOINT = 'https://api.ocr.space/parse/image';
-const API_KEY = process.env.REACT_APP_RECEIPT_API_KEY;
+// const API_KEY = process.env.REACT_APP_RECEIPT_API_KEY;
+const API_KEY = 'c014c7719c88957';
 
 const parseReceiptTable = (extractedText) => {
   const lines = extractedText.split('\n');
