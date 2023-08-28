@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from './Input';
 import Button from './Button';
+import { Error } from './Error';
 import { SiMoneygram } from 'react-icons/si';
 import { User, Session } from '../requests';
 
@@ -19,7 +20,7 @@ const SignUp = ({
     password: '',
     password_confirmation: '',
   });
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -37,7 +38,7 @@ const SignUp = ({
     try {
       const res = await User.create({ user });
       if (res.status === 422) {
-        setErrors([{ message: res.message }]);
+        setErrors(JSON.parse(res.message));
       } else {
         const { email, password } = user;
         await Session.create({ email, password });
@@ -53,6 +54,16 @@ const SignUp = ({
   const { first_name, last_name, email, password, password_confirmation } =
     user;
 
+  const handleRemoveError = (field) => {
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      messages: {
+        ...prevErrors.messages,
+        [field]: undefined,
+      },
+    }));
+  };
+
   return (
     <div className="w-screen h-screen overflow-hidden">
       <div className="text-3xl flex pt-6 pl-8 font-extrabold">
@@ -62,6 +73,31 @@ const SignUp = ({
         <p className="text-2xl font-bold text-center">Get started here</p>
 
         <div className="w-2/6 flex flex-col justify-items-center">
+          {errors?.messages?.first_name && (
+            <Error
+              errors={errors.messages.first_name}
+              handleClick={() => handleRemoveError('first_name')}
+            />
+          )}
+
+          {errors?.messages?.last_name && (
+            <Error
+              errors={errors.messages.last_name.join('')}
+              handleClick={() => handleRemoveError('last_name')}
+            />
+          )}
+          {errors?.messages?.email && (
+            <Error
+              errors={errors.messages.email}
+              handleClick={() => handleRemoveError('email')}
+            />
+          )}
+          {errors?.messages?.password && (
+            <Error
+              errors={errors.messages.password}
+              handleClick={() => handleRemoveError('password')}
+            />
+          )}
           <div className="grid grid-cols-2 gap-4">
             <Input
               placeholder="First Name"
@@ -105,7 +141,6 @@ const SignUp = ({
             value={password_confirmation}
             onChange={handleChange}
           />
-
           <Button
             bgColor="orange"
             hoverBgColor="amber-200"

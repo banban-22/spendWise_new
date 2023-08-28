@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Session } from '../requests';
 import Input from './Input';
 import Button from './Button';
+import { Error } from './Error';
 import { SiMoneygram } from 'react-icons/si';
 
 const SignIn = ({
@@ -43,14 +44,19 @@ const SignIn = ({
     try {
       const response = await Session.create(request);
       if (response.status === 401) {
-        setErrors([{ message: response.message }]);
+        setErrors(JSON.parse(response.message));
       } else if (response?.id) {
         onSignIn();
         navigate('/dashboard');
       }
     } catch (error) {
-      setErrors([{ message: error.message }]);
+      console.error('Error signing in:', error);
+      setErrors(JSON.parse(error.message));
     }
+  };
+
+  const handleRemoveError = () => {
+    setErrors([]);
   };
 
   return (
@@ -62,6 +68,10 @@ const SignIn = ({
         <p className="text-2xl font-bold text-center">Welcome back</p>
 
         <div className="w-2/6 flex flex-col justify-items-center">
+          {errors?.message && (
+            <Error errors={errors.message} handleClick={handleRemoveError} />
+          )}
+
           <Input
             type="email"
             placeholder="Email"
@@ -81,7 +91,6 @@ const SignIn = ({
             value={password}
             onChange={handleChange}
           />
-
           <Button
             bgColor="orange"
             hoverBgColor="amber-200"
@@ -93,7 +102,6 @@ const SignIn = ({
           >
             Log In
           </Button>
-
           <Link to="/signup" className="underline mt-5 cursor-pointer">
             Don't have an account?
           </Link>
