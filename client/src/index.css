@@ -47,3 +47,6 @@ body {
   color: gray;
   font-weight: 100;
 }
+.manual-input {
+  border: 1px solid #eff1f2;
+}
