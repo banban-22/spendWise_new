@@ -18,6 +18,7 @@ const ReceiptPage = () => {
   const [result, setResult] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [baseCurrency, setBaseCurrency] = useState('');
+  const [currency, setCurrency] = useState('');
   const [errors, setErrors] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   let totalPrice = null;
@@ -173,6 +174,7 @@ const ReceiptPage = () => {
           <TransactionCreate
             baseCurrency={baseCurrency}
             totalPriceFromOCR={totalPrice}
+            currency={currency}
           />
         </div>
       </div>
