@@ -125,7 +125,7 @@ const ExpenseAmount = ({ selectedCategory }) => {
     Miscellaneous: <PiDotsThreeCircleLight />,
     Income: <TbPigMoney />,
   };
-  console.log(transactionData);
+  // console.log(transactionData);
 
   return (
     <>

@@ -4,7 +4,11 @@ class Category < ApplicationRecord
 
     validates :name, presence: true
 
-    before_save {
-        self.name = name.capitalize
-    }
+    def as_json(options = {})
+        super(options.merge({ except: [:created_at, :updated_at] }))
+    end
+
+    # before_save {
+    #     self.name = name.capitalize
+    # }
 end

@@ -68,12 +68,30 @@ const PieChart = () => {
     }
   };
 
+  // const fetchCategories = () => {
+  //   Category.index()
+  //     .then((data) => {
+  //       setCategoryData(data);
+  //     })
+  //     .catch((err) => {
+  //       setHasError(true);
+  //     });
+  // };
+
   const fetchCategories = () => {
     Category.index()
       .then((data) => {
-        setCategoryData(data);
+        // Ensure data is an array before setting categoryData
+        if (Array.isArray(data)) {
+          setCategoryData(data);
+        } else {
+          console.error('Data received from API is not an array:', data);
+          // Handle the error or set categoryData to an empty array based on your requirements
+          setCategoryData([]);
+        }
       })
       .catch((err) => {
+        console.error('Error fetching categories:', err);
         setHasError(true);
       });
   };
@@ -88,6 +106,8 @@ const PieChart = () => {
         setErrors(err);
       });
   }, []);
+
+  console.log(categoryData);
 
   const categoryLookup = categoryData.reduce((acc, category) => {
     acc[category.id] = category.name;
